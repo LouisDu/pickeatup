@@ -10,7 +10,8 @@ class Restaurant < ActiveRecord::Base
                         :adminitrative_area_level_1,
                         :postal_code,
                         :country,
-                        :logo,
+                        :logo
+
   validates_uniqueness_of :name
 
   mount_uploader :logo, PhotoUploader

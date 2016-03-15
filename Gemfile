@@ -2,13 +2,17 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 
+gem 'autoprefixer-rails'
+gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'devise'
 gem 'faker'
 gem 'figaro'
 gem "fog"
+gem 'font-awesome-sass'
 gem 'mini_magick'
 gem 'pg'
+gem 'simple_form'
 
 group :production do
   gem 'rails_12factor'

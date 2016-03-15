@@ -5,13 +5,14 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @place = Place.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
     @user = current_user
   end
 
   def create
     @user = current_user
     @restaurant = @user.restaurants.build(restaurant_params)
+
     if @restaurant.save
       redirect_to @restaurant
     else

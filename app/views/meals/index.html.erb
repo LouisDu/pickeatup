@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="row">
+        <% if @meals.blank? %>
+          There is no meal
+        <% else %>
+          <% @meals.each do |meal| %>
+            <div class="col-xs-6">
+              <%= render 'meals/meal_card', meal: meal %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <h1>Map</h1>
+    </div>
+  </div>
+</div>

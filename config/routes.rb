@@ -4,17 +4,17 @@ Rails.application.routes.draw do
   root 'meals#index'
 
   resources :users do
-    ressources :profiles
+    resources :profiles
   end
 
-  ressources :restaurants do
-    ressources :meals, only: [:new, :create, :update, :edit, :destroy]
+  resources :restaurants do
+    resources :meals, only: [:new, :create, :update, :edit, :destroy]
   end
 
-  resources :meals, only [:index, :show] do
-    ressources :reviews
+  resources :meals, only: [:index, :show] do
+    resources :reviews
   end
 
-  ressources :orders
+  resources :orders
 
 end

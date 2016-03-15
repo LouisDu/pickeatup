@@ -12,4 +12,5 @@ class Meal < ActiveRecord::Base
   validates :price, numericality: { greater_than: 0 }
   validates :prep_time, numericality: { greater_than: 0 }
 
+  mount_uploader :picture, PhotoUploader
 end

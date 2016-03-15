@@ -12,4 +12,6 @@ class Restaurant < ActiveRecord::Base
                         :country,
                         :logo,
   validates_uniqueness_of :name
+
+  mount_uploader :logo, PhotoUploader
 end

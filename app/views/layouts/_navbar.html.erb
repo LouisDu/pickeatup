@@ -17,20 +17,27 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if user_signed_in? %>
-          <li class="<% 'active' if current_page?(edit_user_registration_path)%> ">
+          <li>
             <%= link_to 'New Restaurant', new_restaurant_path %>
           </li>
-          <li class="<% 'active' if current_page?(edit_user_registration_path)%> ">
+
+          <% if current_user.restaurants.presence %>
+            <li>
+              <%= link_to 'My Restaurants', restaurants_path %>
+            </li>
+          <% end %>
+
+          <li>
             <%= link_to 'My profile', user_profile_path(current_user, current_user.profile) %>
           </li>
-          <li class="<% 'active' if current_page?(edit_user_registration_path)%> ">
+          <li>
             <%= link_to 'My orders', root_path %>
           </li>
         <% else %>
-          <li class="<% 'active' if current_page?(edit_user_registration_path)%> ">
+          <li>
             <%= link_to 'Sign in', new_user_session_path %>
           </li>
-          <li class="<% 'active' if current_page?(edit_user_registration_path)%> ">
+          <li>
             <%= link_to 'Sign up', new_user_registration_path %>
           </li>
         <% end %>

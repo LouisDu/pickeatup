@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
 
   after_create :set_profile
 
-  private
+private
 
-    def set_profile
-      Profile.create(user: self)
-    end
+  def set_profile
+    Profile.create(user: self)
+  end
 
 end

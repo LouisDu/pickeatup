@@ -1,4 +1,6 @@
 User.destroy_all
+RestaurantType.destroy_all
+MealType.destroy_all
 
 user = User.new(email: "mulliez.augustin@gmail.com", password: 'pickeatup')
 user.save

@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-8 col-xs-offset-2">
 
       <h1>New restaurant </h1>
 
-      <% simple_form_for @restaurants do |form| %>
+      <%= simple_form_for @restaurant do |form| %>
         <%= form.input :name %>
         <%= form.input :street_number %>
         <%= form.input :route %>
         <%= form.input :locality %>
         <%= form.input :administrative_area_level_1 %>
         <%= form.input :postal_code %>
-        <%= form.input :country %>
+        <%= form.input :country, as: :string %>
         <%= form.association :restaurant_type %>
         <%= form.input :logo %>
         <%= form.input :logo_cache, as: :hidden %>
         <%= form.submit class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 </div>
-

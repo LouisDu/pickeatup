@@ -6,7 +6,7 @@ gem 'carrierwave'
 gem 'devise'
 gem 'faker'
 gem 'figaro'
-gem "fog-aws"
+gem "fog"
 gem 'mini_magick'
 gem 'pg'
 

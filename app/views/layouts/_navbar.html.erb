@@ -21,7 +21,7 @@
             <%= link_to 'New Restaurant', new_restaurant_path %>
           </li>
           <li class="<% 'active' if current_page?(edit_user_registration_path)%> ">
-            <%= link_to 'My profile', root_path %>
+            <%= link_to 'My profile', user_profile_path(current_user, current_user.profile) %>
           </li>
           <li class="<% 'active' if current_page?(edit_user_registration_path)%> ">
             <%= link_to 'My orders', root_path %>

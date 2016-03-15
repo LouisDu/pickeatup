@@ -1,0 +1,20 @@
+  <div class="row">
+    <div class="col-xs-11 col-xs-offset-1 col-sm-6 col-sm-offset-3 text-center">
+      <h1>Edit my profile</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-11 col-xs-offset-1 col-sm-6 col-sm-offset-3 padded">
+      <%= simple_form_for [@profile.user, @profile] do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :first_name, placeholder: 'e.g: Pierre' %>
+      <%= f.input :last_name, placeholder: 'e.g: Dupont' %>
+      <%= f.input :date_of_birth, placeholder: 'e.g: 01/01/1900' %>
+      <%= f.input :phone_number,  placeholder: 'e.g: 06 01 02 03 04' %>
+      <%= f.input :picture %>
+      <%= f.input :picture_cache, as: :hidden %>
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>

@@ -1,16 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-        <% if current_user.restaurants.blank? %>
-          There is no restaurant
-        <% else %>
-          <% current_user.restaurants.each do |restaurant| %>
-            <p><%= restaurant.name %></p>
-            <%= link_to 'Show', restaurant_path(restaurant) %>
-            <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
-            <%= link_to 'Delete', restaurant_path(restaurant), method: :delete %>
+      <h3>Restaurant meals</h3>
+      <div class="row">
+        <div class="col-xs-12">
+          <% if current_user.restaurants.blank? %>
+              There is no restaurant
+          <% else %>
+            <% current_user.restaurants.each do |restaurant| %>
+              <p><%= restaurant.name %></p>
+              <%= link_to 'Show', restaurant_path(restaurant) %>
+              <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
+              <%= link_to 'Delete', restaurant_path(restaurant), method: :delete %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+        <div class="col-xs-12">
+          <%= link_to 'Add a restaurant', new_restaurant_path %>
+        </div>
+      </div>
+
     </div>
     <div class="col-xs-6">
       <h1>Map</h1>

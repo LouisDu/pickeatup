@@ -8,6 +8,7 @@
           <% @meals.each do |meal| %>
             <div class="col-xs-6">
               <%= render 'meals/meal_card', meal: meal %>
+              <%= link_to 'Show', meal_path(meal) %>
             </div>
           <% end %>
         <% end %>

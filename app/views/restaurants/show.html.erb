@@ -2,18 +2,37 @@
   <div class="row">
 
     <div class="col-xs-6">
-          <h1><%= @restaurant.name %></h1>
-
-          <% if @restaurant.logo.presence %>
-            <%= image_tag image_path(@restaurant.logo)%>
+      <h3>Restaurant meals</h3>
+      <div class="row">
+        <div class="col-xs-12">
+          <% if @restaurant.meals.blank? %>
+              There is no meal
+          <% else %>
+            <% @restaurant.meals.each do |meal| %>
+              <div class="col-xs-6">
+                <%= render 'meals/meal_card', meal: meal %>
+              </div>
+              <%= link_to 'Show', meal_path(meal) %>
+              <%= link_to 'Edit', edit_restaurant_meal_path(@restaurant, meal) %>
+              <%= link_to 'Delete', restaurant_meal_path(@restaurant, meal), method: :delete %>
+            <% end %>
           <% end %>
-
-          <h2><%= @restaurant.address %></h2>
+        </div>
+        <div class="col-xs-12">
+          <%= link_to 'Add a meal', new_restaurant_meal_path(@restaurant) %>
+        </div>
+      </div>
 
     </div>
 
     <div class="col-xs-6">
-      <h3>Restaurant location</h3>
+      <h1><%= @restaurant.name %></h1>
+
+      <% if @restaurant.logo.presence %>
+        <%= image_tag image_path(@restaurant.logo)%>
+      <% end %>
+
+      <h2><%= @restaurant.address %></h2>
     </div>
 
   </div>

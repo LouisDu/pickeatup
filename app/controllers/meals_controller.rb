@@ -1,31 +1,53 @@
 class MealsController < ApplicationController
+  before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
     @meals = Meal.all
   end
 
-  def new
-    @meal = Meal.new
+  def show
+    @user = current_user
+    @review = Review.new
   end
 
-  def show
-    @place = Place.find(params[:id])
-    @user = current_user
+  def new
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @meal = Meal.new
   end
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @meal = Meal.new(meal_params)
-    @meal.restaurant = @restaurant
+    @meal = @restaurant.meals.build(meal_params)
 
     if @meal.save
-      redirect_to restaurant_meal_path(@meal.restaurant, @meal)
+      redirect_to meal_path(@meal)
     else
-      render 'restaurants/show'
+      render :new
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @meal.update(meal_params)
+      redirect_to meal_path(@meal)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @restaurant = @meal.restaurant
+    @meal.destroy
+    redirect_to @restaurant
+  end
+
 private
+
+  def set_meal
+    @meal = Meal.find(params[:id])
+  end
 
   def meal_params
     params.require(:meal).permit( :name,

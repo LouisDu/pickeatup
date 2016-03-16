@@ -1,0 +1,11 @@
+<h4><%= meal.name %></h4>
+
+<% if meal.picture.presence %>
+  <%= image_tag image_path(meal.picture)%>
+<% else %>
+  <%= image_tag('http://unsplash.it/300/200', class: 'img-responsive') %>
+<% end %>
+
+<p><%= meal.prep_time %></p>
+<p><%= meal.price %></p>
+<p><%= meal.description %></p>

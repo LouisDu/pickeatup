@@ -7,7 +7,7 @@ class Restaurant < ActiveRecord::Base
                         :street_number,
                         :route,
                         :locality,
-                        :adminitrative_area_level_1,
+                        :administrative_area_level_1,
                         :postal_code,
                         :country,
                         :logo
@@ -15,4 +15,8 @@ class Restaurant < ActiveRecord::Base
   validates_uniqueness_of :name
 
   mount_uploader :logo, PhotoUploader
+
+  def address
+    "#{street_number} #{route}, #{postal_code}, #{locality}, #{administrative_area_level_1}, #{country}"
+  end
 end

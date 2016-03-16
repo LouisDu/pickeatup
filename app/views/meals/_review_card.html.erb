@@ -1,0 +1,10 @@
+<p><%= review.rating %>/5</p>
+<p><%= review.content %></p>
+
+<% if review.user.profile.picture.presence %>
+  <%= image_tag image_path(review.user.profile.picture) %>
+<% else %>
+  <%= image_tag('profile_placeholder.png') %>
+<% end %>
+<%= review.user.profile.first_name %>
+<%= review.user.profile.last_name%>

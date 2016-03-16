@@ -9,6 +9,7 @@ class Meal < ActiveRecord::Base
                         :picture,
                         :prep_time,
                         :description
+
   validates :price, numericality: { greater_than: 0 }
   validates :prep_time, numericality: { greater_than: 0 }
 

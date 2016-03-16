@@ -1,44 +1,42 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
 
   def new
-    @order_line = Order_line.find(params[:order_line_id])
-    @order = @order_line.orders.build(requester_id: current_user.id)
-         # --> orders , est ce meals?
+    @user = current_user
+    @order = Order.new
   end
 
   def create
-    @order_line = Order_line.find(params[:order_line_id])
+    @user = current_user
+    @order = @user.orders.build(order_params)
 
-    @order = @order_line.orders.build(requester: current_user)
-             # --> orders , est ce meals?
-
-    @order.update(order_params)
+    session[:cart].each do |line|
+      @order_line = @order.order_lines.build(line)
+      @order_line.save
+    end
 
     if @order.save
-      flash[:notice] = "Order request successfully created."
-
-      ::Orders::ToRequesterMailer.creation(@order).deliver_now
-      ::Orders::ToOwnerMailer.creation(@order).deliver_now
-
-      redirect_to account_travels_path
+      redirect_to @order
     else
-      if @order.errors.messages[:requester]
-        flash[:alert] = "You can't book your own order_line."
-      elsif @order.errors.messages[:period]
-        flash[:alert] = "This flat has already been booked for this period."
-      else
-        flash[:alert] = "A problem occured saving your request."
-      end
-      render :new
+      render "meals/show"
     end
+
   end
 
 private
   def order_params
-    params.require(:order).permit(:pick_up_time, :bill, :end_date)
+    params.require(:order).permit(:user_id)
   end
+
+
 end
 
-# 1 order a plusieur order_line
-#   car 1 order_line = 1 produit 1 prix
+
+  #   @order = current_order
+  #   @order_item = @order.order_items.new(order_item_params)
+  #   @order.save
+  #   session[:order_id] = @order.id
+  # end
+
+
+  # @order = Order.find(session[:order_id])
+  # @order = Order.new

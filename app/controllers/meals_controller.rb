@@ -17,8 +17,7 @@ class MealsController < ApplicationController
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @meal = Meal.new(meal_params)
-    @meal.restaurant = @restaurant
+    @meal = @restaurant.meals.build(meal_params)
 
     if @meal.save
       redirect_to meal_path(@meal)

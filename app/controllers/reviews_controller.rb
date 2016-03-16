@@ -1,9 +1,5 @@
 class ReviewsController < ApplicationController
 
-  def new
-    @review = Review.new
-  end
-
   def create
     @meal = Meal.find(params[:meal_id])
     @review = @meal.reviews.build(review_params)

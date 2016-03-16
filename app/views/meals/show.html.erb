@@ -8,6 +8,9 @@
           <% end %>
 
           <h1><%= @meal.name %></h1>
+          <%= simple_form_for @meals  do |form| %>
+            <%= form.button :submit, "Pick Eat Up", class: 'btn btn-primary' %>
+          <% end %>
         </div>
       </div>
 

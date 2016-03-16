@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
   resources :meals, only: [:index, :show] do
     resources :reviews
+    collection do
+      get 'add_to_cart', to: "carts#add_to_cart"
+    end
+
   end
 
   resources :orders

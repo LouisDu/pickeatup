@@ -10,11 +10,8 @@
           <% else %>
             <% @restaurant.meals.each do |meal| %>
               <div class="col-xs-6">
-                <%= render 'meals/meal_card', meal: meal %>
+                <%= render 'meals/meal_card_restaurant_owner', meal: meal %>
               </div>
-              <%= link_to 'Show', meal_path(meal) %>
-              <%= link_to 'Edit', edit_restaurant_meal_path(@restaurant, meal) %>
-              <%= link_to 'Delete', restaurant_meal_path(@restaurant, meal), method: :delete %>
             <% end %>
           <% end %>
         </div>

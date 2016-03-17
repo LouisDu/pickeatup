@@ -9,9 +9,8 @@ class OrdersController < ApplicationController
     @user = current_user
     @order = @user.orders.build(order_params)
 
-    session[:cart].each do |line|
-      @order_line = @order.order_lines.build(line)
-      @order_line.meal_price = line.meal_id.price
+    session[:cart].each do |order_line_hash|
+      order.order_lines.build(meal_quantity: order_line_hash["meal_quantity"], meal_id: order_line_hash["meal_id"], meal_price: order_line_hash["meal_price"])
       @order_line.save
     end
 
@@ -20,7 +19,6 @@ class OrdersController < ApplicationController
     else
       render "meals/show"
     end
-
   end
 
 private
@@ -28,16 +26,5 @@ private
     params.require(:order).permit(:user_id)
   end
 
-
 end
 
-
-  #   @order = current_order
-  #   @order_item = @order.order_items.new(order_item_params)
-  #   @order.save
-  #   session[:order_id] = @order.id
-  # end
-
-
-  # @order = Order.find(session[:order_id])
-  # @order = Order.new

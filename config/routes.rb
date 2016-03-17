@@ -13,8 +13,9 @@ Rails.application.routes.draw do
 
   resources :meals, only: [:index, :show] do
     resources :reviews
+    # resource :cart, only: :add_to_cart, controller: 'carts'
     collection do
-      get 'add_to_cart', to: "carts#add_to_cart"
+      post 'add_to_cart', to: "carts#add_to_cart"
     end
 
   end

@@ -8,6 +8,7 @@ class MealsController < ApplicationController
   def show
     @user = current_user
     @review = Review.new
+    @cart = OrderLine.new
   end
 
   def new

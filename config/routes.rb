@@ -18,7 +18,12 @@ Rails.application.routes.draw do
       post 'add_to_cart', to: "carts#add_to_cart"
     end
 
+    collection do
+      post 'delete_from_cart', to: "carts#delete_from_cart"
+    end
   end
+
+
 
   resources :orders
 

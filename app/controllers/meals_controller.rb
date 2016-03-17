@@ -3,12 +3,17 @@ class MealsController < ApplicationController
 
   def index
     @meals = Meal.all
+    @user = current_user
+    @review = Review.new
+    @cart = OrderLine.new
+    @order = Order.new
   end
 
   def show
     @user = current_user
     @review = Review.new
     @cart = OrderLine.new
+    @order = Order.new
   end
 
   def new

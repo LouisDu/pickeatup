@@ -14,7 +14,8 @@
       </div>
     </div>
     <div class="col-xs-6">
-      <h1>Map ou shopping card</h1>
+      <h3>Panier</h3>
+      <%= render 'cart', cart_array: session[:cart], bill: session[:bill], pick_up_time: session[:pick_up_time] %>
     </div>
   </div>
 </div>

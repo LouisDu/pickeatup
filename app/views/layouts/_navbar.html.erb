@@ -9,29 +9,39 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+
       <%= link_to 'PickEatUp', root_path, class: 'navbar-brand', data: { no_turbolink: 'true'} %>
 
     </div>
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
 
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Orders <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><%= link_to 'My orders', root_path %></li>
+          </ul>
+        </li>
+
         <% if user_signed_in? %>
-          <li>
-            <%= link_to 'New Restaurant', new_restaurant_path %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Restaurants <span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= link_to 'New Restaurant', new_restaurant_path %></li>
+              <% if current_user.restaurants.presence %>
+                <li><%= link_to 'My Restaurants', restaurants_path %></li>
+              <% end %>
+            </ul>
           </li>
 
-          <% if current_user.restaurants.presence %>
-            <li>
-              <%= link_to 'My Restaurants', restaurants_path %>
-            </li>
-          <% end %>
-
-          <li>
-            <%= link_to 'My profile', user_profile_path(current_user, current_user.profile) %>
-          </li>
-          <li>
-            <%= link_to 'My orders', root_path %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Profile <span class="caret"></span></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= link_to 'My profile', user_profile_path(current_user,current_user.profile) %></li>
+              <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete%></li>
+            </ul>
           </li>
         <% else %>
           <li>

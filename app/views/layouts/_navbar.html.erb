@@ -37,7 +37,13 @@
           </li>
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Profile <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle navbar-wagon-pict" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+              <% if current_user.profile.first_name.presence %>
+              <%= current_user.profile.first_name%> <%= image_tag current_user.profile.picture%> <span class="caret"></span>
+              <% else %>
+              <%= 'Your name' %> <%= image_tag current_user.profile.picture%> <span class="caret"></span>
+              <% end %>
+            </a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li><%= link_to 'My profile', user_profile_path(current_user,current_user.profile) %></li>
               <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete%></li>

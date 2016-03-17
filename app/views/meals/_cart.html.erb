@@ -1,0 +1,34 @@
+<div class="container">
+  <!-- order_lines -->
+  <% if cart_array.nil?%>
+    <p>Votre panier est vide</p>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-12">
+        <% cart_array.each do |order_line_hash| %>
+          <p><%= order_line_hash["meal_quantity"] %></p>
+          <% @meal = Meal.find(order_line_hash["meal_id"]) %>
+          <p><%= @meal.name%></p>
+          <p><%= order_line_hash["meal_price"] %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- bill -->
+        <%= bill %>
+        <br>
+        <!-- pick up time -->
+        <%= pick_up_time %>
+        <br>
+        <!-- pick up place -->
+        <%= @meal.restaurant.address %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- button valider -->
+      </div>
+    </div>
+  <% end %>
+</div>

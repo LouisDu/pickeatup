@@ -28,16 +28,5 @@ private
     params.require(:order).permit(:user_id)
   end
 
-
 end
 
-
-  #   @order = current_order
-  #   @order_item = @order.order_items.new(order_item_params)
-  #   @order.save
-  #   session[:order_id] = @order.id
-  # end
-
-
-  # @order = Order.find(session[:order_id])
-  # @order = Order.new

@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
 
     session[:cart].each do |line|
       @order_line = @order.order_lines.build(line)
+      @order_line.meal_price = line.meal_id.price
       @order_line.save
     end
 

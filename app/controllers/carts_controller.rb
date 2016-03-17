@@ -1,12 +1,11 @@
 class CartsController < ApplicationController
 
   def add_to_cart
-    if session[:cart].presence
-    else
-       session[:cart] = []
-    end
-
+    session[:cart] = [] unless session[:cart].presence
     session[:cart] << order_line_params
+
+    @meal = Meal.find(params[:order_line][:meal_id])
+    redirect_to meal_path(@meal)
   end
 
   private
@@ -16,3 +15,4 @@ class CartsController < ApplicationController
                                        :meal_id)
   end
 end
+

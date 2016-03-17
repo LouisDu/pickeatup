@@ -8,14 +8,13 @@
           <% @meals.each do |meal| %>
             <div class="col-xs-6">
               <%= render 'meals/meal_card', meal: meal %>
-              <%= link_to 'Show', meal_path(meal) %>
             </div>
           <% end %>
         <% end %>
       </div>
     </div>
     <div class="col-xs-6">
-      <h1>Map</h1>
+      <h1>Map ou shopping card</h1>
     </div>
   </div>
 </div>

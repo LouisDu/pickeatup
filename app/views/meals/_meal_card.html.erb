@@ -1,11 +1,10 @@
-<h4><%= meal.name %></h4>
-
-<% if meal.picture.presence %>
-  <%= image_tag image_path(meal.picture)%>
-<% else %>
+<div class="thumbnail">
   <%= image_tag('http://unsplash.it/300/200', class: 'img-responsive') %>
-<% end %>
-
-<p><%= meal.prep_time %></p>
-<p><%= meal.price %></p>
-<p><%= meal.description %></p>
+  <div class="caption">
+    <h3><%= meal.name %></h3>
+    <p><%= meal.prep_time %></p>
+    <p><%= meal.price %></p>
+    <p><%= meal.description %></p>
+    <%= link_to "Show", meal_path(meal), class: "btn btn-default", role: "button" %>
+  </div>
+</div>

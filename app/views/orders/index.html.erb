@@ -11,7 +11,7 @@
           <p>Pas de commande</p>
       <% else %>
         <% @orders.each do |order| %>
-          <%= render 'orders/show', order: order %>
+          <%= render 'orders/order_card', order: order %>
         <% end %>
       <% end %>
     </div>

@@ -5,8 +5,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @orders = current_user.orders
-    redirect_to orders_path
+    @order = current_user.orders.last
   end
 
   def new

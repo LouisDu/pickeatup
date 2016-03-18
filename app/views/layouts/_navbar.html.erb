@@ -19,12 +19,14 @@
       <ul class="nav navbar-nav navbar-right">
 
         <% if user_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Orders <span class="caret"></span></a>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><%= link_to 'My orders', orders_path %></li>
-            </ul>
-          </li>
+          <% if current_user.orders.presence %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Orders <span class="caret"></span></a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><%= link_to 'My orders', orders_path %></li>
+              </ul>
+            </li>
+          <% end %>
 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Restaurants <span class="caret"></span></a>

@@ -4,31 +4,25 @@ class CartsController < ApplicationController
     user = current_user
     order = user.orders.build
     if session[:cart].presence
+
       @order_line = OrderLine.new(order_line_params)
-# call the method to build order_lines from session on order
       build_order_lines_from_session(order)
-# I empty session
       session[:cart] = []
-# I look if the line already exist in order_lines from order
-      order.order_lines.each do |order_line|
-        if order_line.meal_id == @order_line.meal_id
-          order_line.meal_quantity += 1
-        else
-          order.order_lines.build(order_line_params)
-        end
+      if order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.present?
+        order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.first.meal_quantity += 1
+      else
+        order.order_lines.build(order_line_params)
       end
-# put back all order_lines in session
       order.order_lines.each do |order_line|
         session[:cart] << order_line
       end
+
     else
-      session[:cart] = []
       session[:cart] << order.order_lines.build(order_line_params)
     end
-# set order method
+
     session[:bill] = order.set_bill
     session[:pick_up_time] = order.set_pick_up_time
-# redirect to the instance show
     @meal = Meal.find(params[:order_line][:meal_id])
     redirect_to meal_path(@meal)
   end
@@ -40,34 +34,23 @@ class CartsController < ApplicationController
       @order_line = OrderLine.new(order_line_params)
       build_order_lines_from_session(order)
       session[:cart] = []
-      order.order_lines.each do |order_line|
-        if order_line.meal_id == @order_line.meal_id
-          if order_line.meal_quantity > 1
-            order_line.meal_quantity -= 1
-          else
-            order_line.destroy
-          end
-        end
+      if order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.first.meal_quantity > 1
+        order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.first.meal_quantity -= 1
+      else
+        order = order.order_lines.reject { |ol| ol.meal_id == @order_line.meal_id }
       end
-      # put back all order_lines in session
+    end
+
+    if session[:cart].presence
       order.order_lines.each do |order_line|
         session[:cart] << order_line
       end
+      session[:bill] = order.set_bill
+      session[:pick_up_time] = order.set_pick_up_time
     else
-      flash[:notice] = "Vous panier est vide"
+      session[:bill] = 0
+      session[:pick_up_time] = 0
     end
-# set order method
-    session[:bill] = order.set_bill
-    session[:pick_up_time] = order.set_pick_up_time
-# redirect to the instance show
-    @meal = Meal.find(params[:order_line][:meal_id])
-    redirect_to meal_path(@meal)
-  end
-
-  def empty_cart
-    session[:cart] = []
-    session[:bill] = []
-    session[:pick_up_time] = []
     @meal = Meal.find(params[:order_line][:meal_id])
     redirect_to meal_path(@meal)
   end

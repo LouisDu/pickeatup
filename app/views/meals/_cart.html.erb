@@ -1,8 +1,6 @@
 <div class="container">
   <!-- order_lines -->
-  <% if cart_array.nil?%>
-    <p>Votre panier est vide</p>
-  <% else %>
+  <% if cart_array.presence %>
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
@@ -55,20 +53,16 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="row">
-          <div class="col-xs-6">
+          <div class="col-xs-12">
             <!-- button valider -->
             <%= simple_form_for @order do |form| %>
               <%= form.button :submit, "Valider mon panier", class: 'btn btn-default' %>
             <% end %>
           </div>
-          <div class="col-xs-6">
-            <!-- button valider -->
-            <%= simple_form_for @cart, url: empty_cart_meals_path, method: :post  do |form| %>
-              <%= form.button :submit, "vider mon panier", class: 'btn btn-default' %>
-            <% end %>
-          </div>
         </div>
       </div>
     </div>
+    <% else %>
+      <p>Votre panier est vide</p>
   <% end %>
 </div>

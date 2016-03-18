@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
 
+  def show
+    @user = current_user
+  end
+
   def new
     @user = current_user
     @order = Order.new
@@ -8,17 +12,14 @@ class OrdersController < ApplicationController
   def create
     @user = current_user
     @order = @user.orders.build(order_params)
+    @order.save
 
     session[:cart].each do |order_line_hash|
-      order.order_lines.build(meal_quantity: order_line_hash["meal_quantity"], meal_id: order_line_hash["meal_id"], meal_price: order_line_hash["meal_price"])
-      @order_line.save
+      order_line = @order.order_lines.build(meal_quantity: order_line_hash["meal_quantity"], meal_id: order_line_hash["meal_id"], meal_price: order_line_hash["meal_price"])
+      order_line.save
     end
 
-    if @order.save
-      redirect_to @order
-    else
-      render "meals/show"
-    end
+    redirect_to @order
   end
 
 private

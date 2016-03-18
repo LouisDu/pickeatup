@@ -12,7 +12,7 @@
             <%= form.input :meal_quantity, as: :hidden, input_html: { value: 1 } %>
             <%= form.input :meal_price, as: :hidden, input_html: { value: @meal.price } %>
             <%= form.input :meal_id, input_html: { value: @meal.id }, as: :hidden %>
-            <%= form.button :submit, "Pick Eat Up", class: 'btn btn-primary' %>
+            <%= form.button :submit, "Pick Eat Up", class: 'btn btn-default' %>
           <% end %>
         </div>
       </div>
@@ -47,7 +47,8 @@
 
     <div class="col-xs-6">
 <!-- pourquoi pas un if pour mettre la carte quand le manier est vide -->
-      <h3>Panier</h3>
+      <h3>Mon panier</h3>
+      <hr>
       <%= render 'cart', cart_array: session[:cart], bill: session[:bill], pick_up_time: session[:pick_up_time] %>
     </div>
   </div>

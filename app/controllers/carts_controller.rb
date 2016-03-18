@@ -4,15 +4,23 @@ class CartsController < ApplicationController
     user = current_user
     order = user.orders.build
     if session[:cart].presence
-      session[:cart] << OrderLine.new(order_line_params)
-      session[:cart].each do |order_line_hash|
-        order.order_lines.build(meal_quantity: order_line_hash["meal_quantity"], meal_id: order_line_hash["meal_id"], meal_price: order_line_hash["meal_price"])
-      end
-    else
+
+      @order_line = OrderLine.new(order_line_params)
+      build_order_lines_from_session(order)
       session[:cart] = []
-      @order_line = order.order_lines.build(order_line_params)
-      session[:cart] << @order_line
+      if order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.present?
+        order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.first.meal_quantity += 1
+      else
+        order.order_lines.build(order_line_params)
+      end
+      order.order_lines.each do |order_line|
+        session[:cart] << order_line
+      end
+
+    else
+      session[:cart] << order.order_lines.build(order_line_params)
     end
+
     session[:bill] = order.set_bill
     session[:pick_up_time] = order.set_pick_up_time
     @meal = Meal.find(params[:order_line][:meal_id])
@@ -20,16 +28,30 @@ class CartsController < ApplicationController
   end
 
   def delete_from_cart
-    @meal = Meal.find(params[:order_line][:meal_id])
     user = current_user
     order = user.orders.build
-    session[:cart].each do |order_line_hash|
-        order.order_lines.build(meal_quantity: order_line_hash["meal_quantity"], meal_id: order_line_hash["meal_id"], meal_price: order_line_hash["meal_price"])
+    if session[:cart].presence
+      @order_line = OrderLine.new(order_line_params)
+      build_order_lines_from_session(order)
+      session[:cart] = []
+      if order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.first.meal_quantity > 1
+        order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.first.meal_quantity -= 1
+      else
+        order = order.order_lines.reject { |ol| ol.meal_id == @order_line.meal_id }
       end
-    session[:cart] = []
-    order.order_lines.each do |order_line|
-      session[:cart] << order_line unless order_line.meal == @meal
     end
+
+    if session[:cart].presence
+      order.order_lines.each do |order_line|
+        session[:cart] << order_line
+      end
+      session[:bill] = order.set_bill
+      session[:pick_up_time] = order.set_pick_up_time
+    else
+      session[:bill] = 0
+      session[:pick_up_time] = 0
+    end
+    @meal = Meal.find(params[:order_line][:meal_id])
     redirect_to meal_path(@meal)
   end
 
@@ -39,6 +61,12 @@ class CartsController < ApplicationController
     params.require(:order_line).permit(:meal_quantity,
                                        :meal_id,
                                        :meal_price)
+  end
+
+  def build_order_lines_from_session(order)
+    session[:cart].each do |order_line_hash|
+      order.order_lines.build(meal_quantity: order_line_hash["meal_quantity"], meal_id: order_line_hash["meal_id"], meal_price: order_line_hash["meal_price"])
+    end
   end
 
   def order_params

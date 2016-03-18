@@ -18,7 +18,6 @@ class CartsController < ApplicationController
       end
 
     else
-      session[:cart] = []
       session[:cart] << order.order_lines.build(order_line_params)
     end
 

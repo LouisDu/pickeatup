@@ -1,33 +1,13 @@
 <div class="container">
-    <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
-        <div class="row">
-          <div class="col-xs-4">Quantité</div>
-          <div class="col-xs-5">Nom</div>
-          <div class="col-xs-3">Prix unitaire</div>
-        </div>
-        <hr>
-        <% @user.orders.last.order_lines.each do |order_line| %>
-          <div class="row">
-            <div class="col-xs-4"><%= order_line.meal_quantity %></div>
-            <div class="col-xs-5"><%= order_line.meal.name %></div>
-            <div class="col-xs-3"><%= order_line.meal_price %></div>
-          </div>
-        <% end %>
-    </div>
-  </div>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-      <hr>
-      <p><%= @user.orders.last.bill %></p>
-      <p><%= @user.orders.last.pick_up_time %></p>
+      <h3>Ma commande</h3>
     </div>
   </div>
+
   <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <hr>
-      <p><strong>Restaurant: </strong><%= @user.orders.last.order_lines.last.meal.restaurant.name %></p>
-      <p><strong>Address: </strong><%= @user.orders.last.order_lines.last.meal.restaurant.address %></p>
+    <div class="col-xs-12">
+      <%= render 'orders/order_card', order: @order %>
     </div>
   </div>
   <div class="row">

@@ -1,26 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-8 col-xs-offset-2">
       <h3>Historique des commandes</h3>
-      <div class="row">
-        <div class="col-xs-12">
-          <% if @orders.length == 0 %>
-              <p>Pas de commande</p>
-          <% else %>
-            <% @orders.each do |order| %>
-              <
-            <% end %>
+    </div>
+  </div>
 
-            <%= order.status %>
-            <%= order.created_at %>
-              <% @order_line(order.id).each do |order_line| %>
-              <% order_line.meal_id%>
-              <% end %>
-            <%= order.bill %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <% if @orders.length == 0 %>
+          <p>Pas de commande</p>
+      <% else %>
+        <% @orders.each do |order| %>
+          <%= render 'orders/order_card', order: order %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

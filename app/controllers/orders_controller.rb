@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = current_user.orders
+    @orders = current_user.orders.reverse
   end
 
   def show
-    @user = current_user
+    @order = current_user.orders.last
   end
 
   def new
@@ -25,6 +25,8 @@ class OrdersController < ApplicationController
 
     @order.set_pick_up_time
     @order.set_bill
+
+    @order.save
 
     redirect_to @order
   end

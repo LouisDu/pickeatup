@@ -25,8 +25,7 @@ class CartsController < ApplicationController
 
     session[:bill] = order.set_bill
     session[:pick_up_time] = order.set_pick_up_time
-    @meal = Meal.find(params[:order_line][:meal_id])
-    redirect_to meal_path(@meal)
+    redirect_to :back
   end
 
   def delete_from_cart
@@ -43,7 +42,7 @@ class CartsController < ApplicationController
       end
     end
 
-    if order.presence
+    if order.order_lines.presence
       order.order_lines.each do |order_line|
         session[:cart] << order_line
       end
@@ -53,8 +52,7 @@ class CartsController < ApplicationController
       session[:bill] = 0
       session[:pick_up_time] = 0
     end
-    @meal = Meal.find(params[:order_line][:meal_id])
-    redirect_to meal_path(@meal)
+    redirect_to :back
   end
 
   private

@@ -19,6 +19,9 @@ class OrdersController < ApplicationController
       order_line.save
     end
 
+    @order.set_pick_up_time
+    @order.set_bill
+
     redirect_to @order
   end
 

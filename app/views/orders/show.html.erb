@@ -16,4 +16,24 @@
         <% end %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <hr>
+      <p><%= @user.orders.last.bill %></p>
+      <p><%= @user.orders.last.pick_up_time %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <hr>
+      <p><strong>Restaurant: </strong><%= @user.orders.last.order_lines.last.meal.restaurant.name %></p>
+      <p><strong>Address: </strong><%= @user.orders.last.order_lines.last.meal.restaurant.address %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <hr>
+      <p>Map</p>
+    </div>
+  </div>
 </div>

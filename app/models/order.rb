@@ -7,19 +7,16 @@ class Order < ActiveRecord::Base
     self.order_lines.each do |order_line|
       prep_times << order_line.meal.prep_time
     end
-
     max_prep_time = prep_times.sort.last
-
-    @pick_up_time = Time.now + max_prep_time * 60
+    self.pick_up_time = Time.now + max_prep_time * 60
   end
-
 
   def set_bill
     subtotal = 0
     self.order_lines.each do |order_line|
       subtotal += order_line.meal_price * order_line.meal_quantity
     end
-    @bill = subtotal
+    self.bill = subtotal
   end
 
 end

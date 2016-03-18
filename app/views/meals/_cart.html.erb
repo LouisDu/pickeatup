@@ -1,42 +1,69 @@
 <div class="container">
   <!-- order_lines -->
-  <% if cart_array.nil?%>
-    <p>Votre panier est vide</p>
-  <% else %>
+  <% if cart_array.presence %>
     <div class="row">
       <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-4">Quantité</div>
+          <div class="col-xs-5">Nom</div>
+          <div class="col-xs-3">Prix unitaire</div>
+        </div>
         <% cart_array.each do |order_line_hash| %>
-          <p><%= order_line_hash["meal_quantity"] %></p>
-          <% @meal = Meal.find(order_line_hash["meal_id"]) %>
-          <p><%= @meal.name%></p>
-          <p><%= order_line_hash["meal_price"] %></p>
-<!-- button delete_from_cart -->
-          <%= simple_form_for @cart, url: delete_from_cart_meals_path, method: :post  do |form| %>
-            <%= form.input :meal_id, input_html: { value: order_line_hash["meal_id"] }, as: :hidden %>
-            <%= form.button :submit, "Supprimer", class: 'btn btn-primary' %>
-          <% end %>
+          <div class="row">
+            <div class="col-xs-4">
+              <!-- button + -->
+              <%= simple_form_for @cart, url: add_to_cart_meals_path, method: :post  do |form| %>
+                <%= form.input :meal_quantity, as: :hidden, input_html: { value: 1 } %>
+                <%= form.input :meal_price, as: :hidden, input_html: { value: order_line_hash["meal_price"] } %>
+                <%= form.input :meal_id, input_html: { value: order_line_hash["meal_id"] }, as: :hidden %>
+                <%= form.button :submit, "+", class: 'btn btn-default' %>
+              <% end %>
+              <!-- meal quantity -->
+              <%= order_line_hash["meal_quantity"] %>
+              <!-- button - -->
+              <%= simple_form_for @cart, url: delete_from_cart_meals_path, method: :post  do |form| %>
+                <%= form.input :meal_id, input_html: { value: order_line_hash["meal_id"] }, as: :hidden %>
+                <%= form.button :submit, "-", class: 'btn btn-default' %>
+              <% end %>
+            </div>
+            <div class="col-xs-5">
+              <% @meal = Meal.find(order_line_hash["meal_id"]) %>
+              <p><%= @meal.name%></p>
+            </div>
+            <div class="col-xs-3">
+              <!-- meal name -->
+              <p><%= order_line_hash["meal_price"] %></p>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
+    <hr>
     <div class="row">
       <div class="col-xs-12">
-        <!-- bill -->
-        <%= bill %>
-        <br>
-        <!-- pick up time -->
-        <%= pick_up_time %>
-        <br>
-        <!-- pick up place -->
-        <%= @meal.restaurant.address %>
+        <ul>
+          <li><%= bill %></li>
+          <li><%= pick_up_time %></li>
+          <li><%= @meal.restaurant.name %></li>
+          <li><%= @meal.restaurant.address %></li>
+        </ul>
       </div>
     </div>
+    <hr>
     <div class="row">
       <div class="col-xs-12">
-        <!-- button valider -->
-        <%= simple_form_for @order do |form| %>
-          <%= form.button :submit, "Valider mon panier", class: 'btn btn-primary' %>
-        <% end %>
+        <div class="row">
+          <div class="col-xs-12">
+            <!-- button valider -->
+            <%= simple_form_for @order do |form| %>
+              <%= form.input :user_id, input_html: { value: current_user }, as: :hidden %>
+              <%= form.button :submit, "Valider mon panier", class: 'btn btn-default' %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
+    <% else %>
+      <p>Votre panier est vide</p>
   <% end %>
 </div>

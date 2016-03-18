@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="row">
+          <div class="col-xs-4">Date: <%= order.created_at.strftime("%d %b. %Y")%></div>
+          <div class="col-xs-5"></div>
+          <div class="col-xs-3"> Status: <%= order.status %></div>
+        </div>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="row">
+          <div class="col-xs-4">Quantité</div>
+          <div class="col-xs-5">Nom</div>
+          <div class="col-xs-3">Prix unitaire</div>
+        </div>
+        <hr>
+        <% order.order_lines.each do |order_line| %>
+          <div class="row">
+            <div class="col-xs-4"><%= order_line.meal_quantity %></div>
+            <div class="col-xs-5"><%= order_line.meal.name %></div>
+            <div class="col-xs-3"><%= order_line.meal_price %> $</div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <hr>
+      <div class="row">
+        <div class="col-xs-8">Pick Up Time: <%= order.pick_up_time.strftime("%H:%M")%></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-3">Total: <%= order.bill %> $</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <hr>
+      <p><strong>Restaurant: </strong><%= order.order_lines.last.meal.restaurant.name %></p>
+      <p><strong>Address: </strong><%= order.order_lines.last.meal.restaurant.address %></p>
+    </div>
+  </div>
+</div>

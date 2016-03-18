@@ -7,8 +7,8 @@
 
   <div class="row">
     <div class="col-xs-12">
-      <% if @orders.length == 0 %>
-          <p>Pas de commande</p>
+      <% if @orders.nil? %>
+          <p>Vous n'avez pas commande</p>
       <% else %>
         <% @orders.each do |order| %>
           <%= render 'orders/order_card', order: order %>

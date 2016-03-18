@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  skip_after_action :verify_authorized
 
   def add_to_cart
     user = current_user

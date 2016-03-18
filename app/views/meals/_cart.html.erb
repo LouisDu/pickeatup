@@ -56,6 +56,7 @@
           <div class="col-xs-12">
             <!-- button valider -->
             <%= simple_form_for @order do |form| %>
+              <%= form.input :user_id, input_html: { value: current_user }, as: :hidden %>
               <%= form.button :submit, "Valider mon panier", class: 'btn btn-default' %>
             <% end %>
           </div>

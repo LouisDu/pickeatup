@@ -18,6 +18,7 @@ class CartsController < ApplicationController
       end
 
     else
+      session[:cart] = []
       session[:cart] << order.order_lines.build(order_line_params)
     end
 
@@ -37,11 +38,11 @@ class CartsController < ApplicationController
       if order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.first.meal_quantity > 1
         order.order_lines.select { |ol| ol.meal_id == @order_line.meal_id }.first.meal_quantity -= 1
       else
-        order = order.order_lines.reject { |ol| ol.meal_id == @order_line.meal_id }
+        order.order_lines = order.order_lines.reject { |ol| ol.meal_id == @order_line.meal_id }
       end
     end
 
-    if session[:cart].presence
+    if order.presence
       order.order_lines.each do |order_line|
         session[:cart] << order_line
       end

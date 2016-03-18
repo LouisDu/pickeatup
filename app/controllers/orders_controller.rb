@@ -1,22 +1,26 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = current_user.orders.reverse
+    #@orders = current_user.orders.reverse
+    @orders = policy_scope(Order)
   end
 
   def show
     @order = current_user.orders.last
+    authorize @order
   end
 
   def new
     @user = current_user
     @order = Order.new
+    authorize @order
   end
 
   def create
     @user = current_user
     @order = @user.orders.build(order_params)
     @order.save
+    authorize @order
 
     session[:cart].each do |order_line_hash|
       order_line = @order.order_lines.build(meal_quantity: order_line_hash["meal_quantity"], meal_id: order_line_hash["meal_id"], meal_price: order_line_hash["meal_price"])

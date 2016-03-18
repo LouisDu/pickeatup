@@ -12,7 +12,6 @@ class ReviewPolicy < ApplicationPolicy
         meal_array << order_line.meal
       end
     end
-    #@user.orders.order_lines.find(@record.meal)
-    raise
+    meal_array.include? (@record.meal) && @record.user != @record.meal.restaurant.user
   end
 end

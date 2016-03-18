@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
     @meal = Meal.find(params[:meal_id])
     @review = @meal.reviews.build(review_params)
     @review.user = current_user
+    authorize @review
 
     if @review.save
       flash[:notice] = "Votre avis est enregistré."

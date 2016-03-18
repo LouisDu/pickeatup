@@ -1,12 +1,13 @@
 class MealsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
   def index
-    @meals = Meal.all
     @user = current_user
     @review = Review.new
     @cart = OrderLine.new
     @order = Order.new
+    @meals = policy_scope(Meal)
   end
 
   def show
@@ -14,16 +15,19 @@ class MealsController < ApplicationController
     @review = Review.new
     @cart = OrderLine.new
     @order = Order.new
+    authorize @meal
   end
 
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @meal = Meal.new
+    @meal = @restaurant.meals.build
+    authorize @meal
   end
 
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
     @meal = @restaurant.meals.build(meal_params)
+    authorize @meal
 
     if @meal.save
       redirect_to meal_path(@meal)
@@ -33,17 +37,22 @@ class MealsController < ApplicationController
   end
 
   def edit
+    @restaurant = @meal.restaurant
+    authorize @meal
   end
 
   def update
+    authorize @meal
+    @restaurant = @meal.restaurant
     if @meal.update(meal_params)
-      redirect_to meal_path(@meal)
+      redirect_to restaurant_path(@restaurant)
     else
       render :edit
     end
   end
 
   def destroy
+    authorize @meal
     @restaurant = @meal.restaurant
     @meal.destroy
     redirect_to @restaurant

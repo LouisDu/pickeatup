@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>Historique des commandes</h3>
+      <div class="row">
+        <div class="col-xs-12">
+          <% if @orders.nil? %>
+              <p>Pas de commande</p>
+          <% else %>
+            <% @orders.each do |order| %>
+            <%= order.meal_id %>
+            <%= order.pick_up_time %>
+            <%= order.bill %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+   </div>
+  </div>
+</div>

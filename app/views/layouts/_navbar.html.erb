@@ -21,7 +21,14 @@
         <% if user_signed_in? %>
           <% if current_user.orders.presence %>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Orders <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                <div class="badge-container">
+                  <i class="fa fa-shopping-basket"></i>
+                  <% if current_user.orders.last.status == "Pending" %>
+                    <div class="badge badge-blue">!</div>
+                  <% end %>
+                </div>
+              </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li><%= link_to 'My orders', orders_path %></li>
               </ul>

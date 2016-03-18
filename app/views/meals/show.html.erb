@@ -14,22 +14,19 @@
             <%= form.input :meal_id, input_html: { value: @meal.id }, as: :hidden %>
             <%= form.button :submit, "Pick Eat Up", class: 'btn btn-default' %>
           <% end %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <h2>Reviews</h2>
-          <% if @meal.reviews.any? %>
-            <% @meal.reviews.each do |review| %>
-              <%= render 'review_card', review: review %>
-            <% end %>
-          <% else %>
-            <p>Soyez le premier à donner votre avis</p>
+          <%= simple_form_for @meal, url: add_review_to_meal, method: :post  do |form| %>
+          link to   <%= render 'review_card', review: review %>
+          <%= form.button :submit, "review", class: 'btn btn-default' %>
           <% end %>
 
+          <%= link_to new_cocktail_dose_path(@cocktail.id), {class: "btn btn-primary"} do %>
+
+          Je dois fair eun link to all reviews.
+
         </div>
       </div>
+<!-- LE REVIEW FORM DOIT APPARAITRE UNE FOIS LA COMMANDE VALIDE, PAS DANS LE SHOW MEAL -->
+
 
       <div class="row">
         <div class="col-xs-12">

@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Reviews</h2>
+    <% if @meal.reviews.any? %>
+      <% @meal.reviews.each do |review| %>
+        <%= render 'review_card', review: review %>
+      <% end %>
+    <% else %>
+      <p>Soyez le premier à donner votre avis</p>
+    <% end %>
+
+  </div>
+</div>

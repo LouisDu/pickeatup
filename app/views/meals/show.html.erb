@@ -14,37 +14,14 @@
             <%= form.input :meal_id, input_html: { value: @meal.id }, as: :hidden %>
             <%= form.button :submit, "Pick Eat Up", class: 'btn btn-default' %>
           <% end %>
+          <%= link_to meal_reviews_path(@meal),{class: "btn btn-primary"} do %>
+            Reviews
+           <% end %>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <h2>Reviews</h2>
-          <% if @meal.reviews.any? %>
-            <% @meal.reviews.each do |review| %>
-              <%= render 'review_card', review: review %>
-            <% end %>
-          <% else %>
-            <p>Soyez le premier à donner votre avis</p>
-          <% end %>
-
-        </div>
+       <div class="col-xs-12">
       </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <h3>Donnez votre avis</h3>
-
-          <%= simple_form_for [@meal, @review] do |form| %>
-            <%= form.input :content %>
-            <%= form.input :rating, collection: 0..5 %>
-            <%= form.button :submit, class: 'btn btn-primary' %>
-          <% end %>
-
-        </div>
-      </div>
-    </div>
-
+<!-- LE REVIEW FORM DOIT APPARAITRE UNE FOIS LA COMMANDE VALIDE, PAS DANS LE SHOW MEAL -->
     <div class="col-xs-6">
 <!-- pourquoi pas un if pour mettre la carte quand le manier est vide -->
       <h3>Mon panier</h3>

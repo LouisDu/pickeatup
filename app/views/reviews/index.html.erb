@@ -1,12 +1,24 @@
 <div class="row">
   <div class="col-xs-12">
     <h2>Reviews</h2>
+
     <% if @meal.reviews.any? %>
       <% @meal.reviews.each do |review| %>
         <%= render 'review_card', review: review %>
       <% end %>
     <% else %>
       <p>Soyez le premier à donner votre avis</p>
+            <div class="row">
+              <div class="col-xs-12">
+            <%= simple_form_for [@meal, @review] do |form| %>
+            <%= form.input :content %>
+            <%= form.input :rating, collection: 0..5 %>
+            <%= form.button :submit, class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
     <% end %>
 
   </div>

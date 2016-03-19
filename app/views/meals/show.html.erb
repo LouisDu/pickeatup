@@ -14,34 +14,14 @@
             <%= form.input :meal_id, input_html: { value: @meal.id }, as: :hidden %>
             <%= form.button :submit, "Pick Eat Up", class: 'btn btn-default' %>
           <% end %>
-          <%= simple_form_for @meal, url: add_review_to_meal, method: :post  do |form| %>
-          link to   <%= render 'review_card', review: review %>
-          <%= form.button :submit, "review", class: 'btn btn-default' %>
-          <% end %>
-
-          <%= link_to new_cocktail_dose_path(@cocktail.id), {class: "btn btn-primary"} do %>
-
-          Je dois fair eun link to all reviews.
-
+          <%= link_to meal_reviews_path(@meal),{class: "btn btn-primary"} do %>
+            Reviews
+           <% end %>
         </div>
+      </div>
+       <div class="col-xs-12">
       </div>
 <!-- LE REVIEW FORM DOIT APPARAITRE UNE FOIS LA COMMANDE VALIDE, PAS DANS LE SHOW MEAL -->
-
-
-      <div class="row">
-        <div class="col-xs-12">
-          <h3>Donnez votre avis</h3>
-
-          <%= simple_form_for [@meal, @review] do |form| %>
-            <%= form.input :content %>
-            <%= form.input :rating, collection: 0..5 %>
-            <%= form.button :submit, class: 'btn btn-primary' %>
-          <% end %>
-
-        </div>
-      </div>
-    </div>
-
     <div class="col-xs-6">
 <!-- pourquoi pas un if pour mettre la carte quand le manier est vide -->
       <h3>Mon panier</h3>

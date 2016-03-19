@@ -1,25 +1,37 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h2>Reviews</h2>
-
-    <% if @meal.reviews.any? %>
-      <% @meal.reviews.each do |review| %>
-        <%= render 'review_card', review: review %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 left-col">
+    <!-- Definir la class left-col sur cette base  height: 89.5vh (la ca fonctionne pour un right col) -->
+      <% content_for(:link) do %>
+        <%= link_to "back", meal_path(@meal), class: "btn btn-default", role: "button" %>
       <% end %>
-    <% else %>
-      <p>Soyez le premier à donner votre avis</p>
+      <%= render 'meals/meal_card', meal: @meal %>
+    </div>
+    <div class="col-xs-6">
+      <div class="row">
+        <div class="col-xs-12 text-center">Les avis</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <% if @meal.reviews.any? %>
+            <% @meal.reviews.each do |review| %>
+              <%= render 'review_card', review: review %>
+            <% end %>
+          <% else %>
+            <p>Soyez le premier à donner votre avis</p>
             <div class="row">
               <div class="col-xs-12">
-            <%= simple_form_for [@meal, @review] do |form| %>
-            <%= form.input :content %>
-            <%= form.input :rating, collection: 0..5 %>
-            <%= form.button :submit, class: 'btn btn-primary' %>
+                <%= simple_form_for [@meal, @review] do |form| %>
+                  <%= form.input :content %>
+                  <%= form.input :rating, collection: 0..5 %>
+                  <%= form.button :submit, class: 'btn btn-primary' %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
     </div>
-
-    <% end %>
-
   </div>
 </div>
+

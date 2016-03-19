@@ -1,18 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-3">
-      <input type="text" class="form-control" placeholder="localisation">
-    </div>
-    <div class="col-xs-3">
-      <input type="text" class="form-control" placeholder="Type de plat">
-    </div>
-    <div class="col-xs-4">
-      <input type="text" class="form-control" placeholder="prix">
-    </div>
-    <div class="col-xs-2">
-      <input class="btn btn-default" type="submit" value="Pick Eat Up">
+    <div class="col-xs-6 col-xs-offset-3 text-center">
+      <h4>Affinez votre selection selon vos envies</h4>
+      <hr>
     </div>
   </div>
+  <div class="row text-center">
+    <div class="col-xs-3">Ma localisation</div>
+    <div class="col-xs-3">Nom de plat</div>
+    <div class="col-xs-2">Categorie</div>
+    <div class="col-xs-2">Prix maximum</div>
+    <div class="col-xs-2"></div>
+  </div>
+  <div class="row">
+    <%= simple_form_for meals_path, method: :post  do |form| %>
+    <div class="col-xs-3">
+      <%= form.input :address, as: :string, label: false , placeholder: 'Grand place, Lille', input_html: { class: "form-control" } %>
+    </div>
+    <div class="col-xs-3">
+      <%= form.input :name, as: :string, label: false , placeholder: 'Couscous', input_html: { class: "form-control" } %>
+    </div>
+    <div class="col-xs-2">
+      <%= form.input :category, as: :string, label: false , placeholder: 'Marocain', input_html: { class: "form-control" } %>
+    </div>
+    <div class="col-xs-2">
+      <%= form.input :max_price, collection: 0..100, label: false , input_html: { class: "form-control" } %>
+    </div>
+    <div class="col-xs-2">
+      <%= form.button :submit, "Pick Eat Up", class: 'btn btn-default' %>
+    </div>
+  </div>
+  <% end %>
   <hr>
   <div class="row">
     <div class="col-xs-6">
@@ -22,6 +40,9 @@
         <% else %>
           <% @meals.each do |meal| %>
             <div class="col-xs-6">
+              <% content_for(:link) do %>
+                <%= link_to "Show", meal_path(meal), class: "btn btn-default", role: "button" %>
+              <% end %>
               <%= render 'meals/meal_card', meal: meal %>
             </div>
           <% end %>

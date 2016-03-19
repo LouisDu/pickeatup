@@ -5,6 +5,6 @@
     <p><%= meal.prep_time %></p>
     <p><%= meal.price %></p>
     <p><%= meal.description %></p>
-    <%= link_to "Show", meal_path(meal), class: "btn btn-default", role: "button" %>
+    <%= yield(:link)%>
   </div>
 </div>

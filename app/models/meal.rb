@@ -14,4 +14,14 @@ class Meal < ActiveRecord::Base
   validates :prep_time, numericality: { greater_than: 0 }
 
   mount_uploader :picture, PhotoUploader
+
+
+  def average_rating
+    if self.reviews.size > 0
+        self.reviews.average(:rating)
+    else
+    end
+  end
+
+
 end

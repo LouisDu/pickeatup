@@ -4,7 +4,6 @@ class MealsController < ApplicationController
 
   def index
     @user = current_user
-    @review = Review.new
     @cart = OrderLine.new
     @order = Order.new
     @meals = policy_scope(Meal)

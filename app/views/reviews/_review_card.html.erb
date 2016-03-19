@@ -1,10 +1,10 @@
-<p><%= review.rating %>/5</p>
-<p><%= review.content %></p>
-
-<% if review.user.profile.picture.presence %>
-  <%= image_tag image_path(review.user.profile.picture) %>
-<% else %>
-  <%= image_tag('profile_placeholder.png') %>
-<% end %>
-<%= review.user.profile.first_name %>
-<%= review.user.profile.last_name%>
+<div class="thumbnail">
+  <%= image_tag('http://unsplash.it/300/200', class: 'img-responsive') %>
+  <div class="caption">
+    <h3><%= review.user.profile.first_name %></h3>
+    <p><%= review.user.profile.last_name %></p>
+    <hr>
+    <p><strong>Note</strong><%= review.rating %>/5</p>
+    <p><strong>Description: </strong><%= review.content %></p>
+  </div>
+</div>

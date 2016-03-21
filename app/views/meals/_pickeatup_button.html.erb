@@ -1,0 +1,6 @@
+<%= simple_form_for @cart, url: add_to_cart_meals_path, method: :post  do |form| %>
+  <%= form.input :meal_quantity, as: :hidden, input_html: { value: 1 } %>
+  <%= form.input :meal_price, as: :hidden, input_html: { value: meal.price } %>
+  <%= form.input :meal_id, input_html: { value: meal.id }, as: :hidden %>
+  <%= form.button :submit, "Pick Eat Up", class: 'btn btn-default' %>
+<% end %>

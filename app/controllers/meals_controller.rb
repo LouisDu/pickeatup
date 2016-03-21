@@ -15,6 +15,7 @@ class MealsController < ApplicationController
     @cart = OrderLine.new
     @order = Order.new
     authorize @meal
+    @restaurant_meal = Meal.where(restaurant_id: @meal.restaurant_id)
   end
 
   def new

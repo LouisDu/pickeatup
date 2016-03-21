@@ -6,25 +6,25 @@
     </div>
   </div>
   <div class="row text-center">
-    <div class="col-xs-3">Ma localisation</div>
     <div class="col-xs-3">Nom de plat</div>
+    <div class="col-xs-3">Nom de restaurant</div>
     <div class="col-xs-2">Categorie</div>
     <div class="col-xs-2">Prix maximum</div>
     <div class="col-xs-2"></div>
   </div>
   <div class="row">
-    <%= simple_form_for meals_path, method: :get  do |form| %>
-    <div class="col-xs-3">
-      <%= form.input :query_address, as: :string, label: false , placeholder: 'Grand place, Lille', input_html: { class: "form-control" } %>
-    </div>
+    <%= simple_form_for :search, url: meals_path, method: :get  do |form| %>
     <div class="col-xs-3">
       <%= form.input :query_name, as: :string, label: false , placeholder: 'Couscous', input_html: { class: "form-control" } %>
+    </div>
+    <div class="col-xs-3">
+      <%= form.input :query_restaurant, as: :string, label: false , placeholder: 'Au Méditérranée', input_html: { class: "form-control" } %>
     </div>
     <div class="col-xs-2">
       <%= form.input :query_category, as: :string, label: false , placeholder: 'Marocain', input_html: { class: "form-control" } %>
     </div>
     <div class="col-xs-2">
-      <%= form.input :query_max_price, collection: 0..100, label: false , input_html: { class: "form-control" } %>
+      <%= form.input :query_max_price, collection: 5..25, label: false , input_html: { class: "form-control" } %>
     </div>
     <div class="col-xs-2">
       <%= form.button :submit, "Pick Eat Up", class: 'btn btn-default' %>

@@ -1,8 +1,7 @@
 class MealPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all.where(name: '%Granite%')
-      'name LIKE ?', '%'
+      scope
     end
   end
 

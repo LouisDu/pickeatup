@@ -25,6 +25,7 @@ class CartsController < ApplicationController
 
     session[:bill] = order.set_bill
     session[:pick_up_time] = order.set_pick_up_time
+
     redirect_to :back
   end
 

@@ -10,12 +10,7 @@
           <% else %>
             <% @restaurant.meals.each do |meal| %>
               <div class="col-xs-6">
-               <% content_for(:link) do %>
-                  <%= link_to "Show", meal_path(meal), class: "btn btn-default", role: "button" %>
-                  <%= link_to 'Edit', edit_restaurant_meal_path(@restaurant, meal), class: "btn btn-default", role: "button" %>
-                  <%= link_to 'Delete', restaurant_meal_path(@restaurant, meal), method: :delete, class: "btn btn-default", role: "button" %>
-                <% end %>
-                <%= render 'meals/meal_card', meal: meal %>
+                <%= render 'meals/meal_card_owner', meal: meal %>
               </div>
             <% end %>
           <% end %>

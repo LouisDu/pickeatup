@@ -40,9 +40,6 @@
         <% else %>
           <% @meals.each do |meal| %>
             <div class="col-xs-6">
-              <% content_for(:link) do %>
-                <%= link_to "Show", meal_path(meal), class: "btn btn-default", role: "button" %>
-              <% end %>
               <%= render 'meals/meal_card', meal: meal %>
             </div>
           <% end %>

@@ -4,9 +4,6 @@
     <!-- Definir la class left-col sur cette base  height: 89.5vh (la ca fonctionne pour un right col) -->
       <div class="row">
         <div class="col-xs-12">
-          <% content_for(:link) do %>
-            <%= link_to "back", meal_path(@meal), class: "btn btn-default", role: "button" %>
-          <% end %>
           <%= render 'meals/meal_card', meal: @meal %>
         </div>
       </div>

@@ -12,6 +12,14 @@ class MealsController < ApplicationController
     @meals = policy_scope(Meal.where('name ILIKE :name1 AND price <= :price1',
       { name1: "%#{params.fetch(:search, {})[:query_name]}%",
         price1: price1}))
+    @restaurants = []
+    @meals.each do |meal|
+      @restaurants << meal.restaurant
+    end
+    @markers = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
+      marker.lat restaurant.latitude
+      marker.lng restaurant.longitude
+    end
   end
 
   def show

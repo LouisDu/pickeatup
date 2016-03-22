@@ -1,6 +1,6 @@
 {
   "deploy" : {
-    "rakegoals": ["db:migrate"],
+    "rakegoals": ["db:migrate", "assets:precompile"],
     "static": "/public",
     "sidekiq": false
   }

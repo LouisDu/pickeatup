@@ -72,7 +72,7 @@ user.profile.update!(
     last_name:    'Fortaine',
     date_of_birth: Date.parse('01/01/2000'),
     phone_number: '06 40 40 40 40',
-    remote_picture_url: 'http://unsplash.it/300/300?random'
+    # remote_picture_url: 'http://unsplash.it/300/300?random'
     )
 
 puts 'Generating Restaurants'

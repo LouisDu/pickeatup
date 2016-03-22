@@ -1,0 +1,10 @@
+.banner.text-center style="background: linear-gradient(-200deg, rgb(50, 50, 50) -3%, rgba(100, 100, 100, 0) 53%); background-image: url('#{image_path 'gus.jpg'}'); background-size: cover;"
+  .container
+    .banner-content
+      h1 Pick-Eat Up
+      p Un click, une foulée, un pick-up.
+      form.form-inline action="/meals"
+        .input-group
+          input.form-control.input-lg placeholder="Grand Place, Lille" type="text"
+          span.input-group-btn
+            input.btn.btn-lg.btn-primary type="submit" value="Pick-Eat Up"

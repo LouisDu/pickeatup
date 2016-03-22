@@ -1,8 +1,12 @@
   <%= image_tag('http://unsplash.it/300/200', class: 'img-responsive') %>
-
     <h3><%= meal.name %></h3>
     <p>Temps Prep. : <%= meal.prep_time %> min</p>
     <p>Prix: <%= meal.price %> $</p>
     <p><%= meal.description %></p>
-
-      <%= link_to "Show", meal_path(meal), class: "btn btn-default", role: "button" %>
+  <% if meal.average_rating.presence %>
+    <%= link_to meal_reviews_path(meal),{class: "fa.fa-star.colored"} do %>
+    Rating: <%= meal.average_rating %> / 5
+    <% end %>
+  <% else %>
+    No review
+  <% end %>

@@ -14,6 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+
 //= require html5shiv
 //= require jflickrfeed.custom
 //= require jflickrfeed.min
@@ -27,6 +28,7 @@
 //= require spectragram.custom
 //= require template
 //= require tweetable.jquery
-
+//= require underscore
+//= require gmaps/google
 //= require_tree .
 

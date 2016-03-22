@@ -6,16 +6,17 @@
 
       <%= simple_form_for @restaurant do |form| %>
         <%= form.input :name %>
-        <%= form.input :street_number %>
-        <%= form.input :route %>
-        <%= form.input :locality %>
-        <%= form.input :administrative_area_level_1 %>
-        <%= form.input :postal_code %>
-        <%= form.input :country, as: :string %>
+        <%= form.input :address, input_html: { id: 'user_input_autocomplete_address' }, placeholder: 'Votre adresse...' %>
+        <%= form.input :street_number, input_html: { id: 'street_number' }, as: :hidden %>
+        <%= form.input :route, input_html: { id: 'route' }, as: :hidden  %>
+        <%= form.input :locality, input_html: { id: 'locality' }, as: :hidden  %>
+        <%= form.input :administrative_area_level_1, input_html: { id: 'administrative_area_level_1' }, as: :hidden  %>
+        <%= form.input :postal_code, input_html: { id: 'postal_code' }, as: :hidden  %>
+        <%= form.input :country, as: :string, input_html: { id: 'country' }, as: :hidden  %>
         <%= form.association :restaurant_type %>
         <%= form.input :logo %>
         <%= form.input :logo_cache, as: :hidden %>
-        <%= form.submit class: 'btn btn-primary' %>
+        <%= form.submit class: 'btn btn-default' %>
       <% end %>
     </div>
   </div>

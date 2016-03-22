@@ -19,6 +19,9 @@ class Restaurant < ActiveRecord::Base
 
   mount_uploader :logo, PhotoUploader
 
+  include PgSearch
+  multisearchable :against => [:name]
+
   def address
     "#{street_number} #{route}, #{postal_code}, #{locality}, #{administrative_area_level_1}, #{country}"
   end

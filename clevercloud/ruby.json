@@ -1,0 +1,6 @@
+{
+  "deploy" : {
+    "rakegoals": ["db:migrate"],
+    "sidekiq": false
+  }
+}

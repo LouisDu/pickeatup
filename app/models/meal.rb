@@ -15,6 +15,8 @@ class Meal < ActiveRecord::Base
 
   mount_uploader :picture, PhotoUploader
 
+  include PgSearch
+  multisearchable :against => [:name]
 
   def average_rating
     if self.reviews.size > 0

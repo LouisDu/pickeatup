@@ -219,6 +219,10 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     pg (0.18.4)
+    pg_search (1.0.5)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
     puma (3.0.2)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -325,6 +329,7 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   pg
+  pg_search
   puma
   pundit
   rails (= 4.2.5.1)

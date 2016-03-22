@@ -7,7 +7,7 @@ class MealsController < ApplicationController
     @user = current_user
     @cart = OrderLine.new
     @order = Order.new
-    price1 = params.fetch(:search, {})[:query_max_price].to_i
+    price1 = params.fetch(:search_meal, {})[:query_max_price].to_i
     price1 = 500 unless price1 > 0
     @meals = policy_scope(MealType.find_by_name("Plats").meals.where('price <= :price1', { price1: price1 }))
     # PgSearch.multisearch(:query_name)

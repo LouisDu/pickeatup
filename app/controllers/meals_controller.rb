@@ -1,7 +1,7 @@
 class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
-  before_action :empty_cart, only: [:show]
+  before_action :empty_cart, only: [:index]
 
   def index
     @user = current_user

@@ -1,6 +1,7 @@
 {
   "deploy" : {
     "rakegoals": ["db:migrate"],
+    "static": "/public",
     "sidekiq": false
   }
 }

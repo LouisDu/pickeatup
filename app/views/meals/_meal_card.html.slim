@@ -1,0 +1,23 @@
+article.blog-entry
+  = image_tag('http://unsplash.it/300/200', class: 'img-responsive')
+  h4
+    = meal.name
+  .meta
+    span.time
+      i.fa.fa-clock-o
+      a href="#"
+        = meal.prep_time
+        ' min
+    span.author
+      i.fa.fa-dollar
+      a href="#"
+        = meal.price
+        '$
+    - if meal.average_rating.presence
+      = link_to meal_reviews_path(meal),{class: "fa.fa-star.colored"}
+        'Rating:
+        = meal.average_rating
+        '/ 5
+    - else
+      'No review
+  p = meal.description

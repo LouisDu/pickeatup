@@ -16,8 +16,6 @@
 //= require bootstrap-sprockets
 
 //= require html5shiv
-//= require jflickrfeed.custom
-//= require jflickrfeed.min
 //= require jquery-1.8.3.min
 //= require jquery-scrollto
 //= require jquery.bxslider-rahisifield

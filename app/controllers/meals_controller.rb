@@ -7,10 +7,10 @@ class MealsController < ApplicationController
     @user = current_user
     @cart = OrderLine.new
     @order = Order.new
-    price1 = params.fetch(:search, {})[:query_max_price].to_i
+    price1 = params.fetch(:search_meal, {})[:query_max_price].to_i
     price1 = 500 unless price1 > 0
     @meals = policy_scope(Meal.where('name ILIKE :name1 AND price <= :price1',
-      { name1: "%#{params.fetch(:search, {})[:query_name]}%",
+      { name1: "%#{params.fetch(:search_meal, {})[:query_name]}%",
         price1: price1}))
     @restaurants = []
     @meals.each do |meal|

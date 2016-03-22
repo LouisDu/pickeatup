@@ -79,16 +79,16 @@ puts 'Generating Restaurants'
 restaurant_types = RestaurantType.all
 meal_types = MealType.all
 
-20.times do
+10.times do
   user = User.all.sample(1).first
   restaurant = user.restaurants.build(
-    name:             Faker::Company.name,
-    street_number:    (1..999).to_a.sample,
-    route:            Faker::Address.street_name,
-    locality:         Faker::Address.city,
-    administrative_area_level_1: Faker::Address.state,
-    postal_code:      Faker::Address.postcode,
-    country:          Faker::Address.country,
+    name:             Faker::Team.creature,
+    street_number:    (1..100).to_a.sample,
+    route:            "Rue esquermoise",
+    locality:         "Lille",
+    administrative_area_level_1: "Nord-pas-de-calais",
+    postal_code:      "59000",
+    country:          "France",
     restaurant_type:  restaurant_types.sample(1).first,
     user: user,
     remote_logo_url: 'http://unsplash.it/300/300?random'
@@ -97,15 +97,16 @@ meal_types = MealType.all
 end
 
 prep = [10, 15, 20, 25, 30]
+price = (5..30).to_a
 
 puts 'Generating Meals'
-60.times do
+30.times do
   restaurant = Restaurant.all.sample(1).first
   meal = restaurant.meals.build(
-    name:             Faker::Commerce.product_name,
-    price:            Faker::Commerce.price,
+    name:             Faker::Color.color_name,
+    price:            price.sample(1).first,
     prep_time:        prep.sample(1).first,
-    description:      Faker::Lorem.sentences,
+    description:      Faker::Lorem.words(4, true),
     meal_type:        meal_types.sample(1).first,
     restaurant:       restaurant,
     remote_picture_url: 'http://unsplash.it/300/300?random'

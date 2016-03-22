@@ -14,6 +14,9 @@ class Restaurant < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
+  geocoded_by :address
+  after_validation :geocode, if: :route_changed?
+
   mount_uploader :logo, PhotoUploader
 
   def address

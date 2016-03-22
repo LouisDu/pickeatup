@@ -8,6 +8,11 @@ class OrdersController < ApplicationController
   def show
     @order = current_user.orders.last
     authorize @order
+    @restaurant = @order.order_lines.first.meal.restaurant
+    @markers = Gmaps4rails.build_markers(@restaurant) do |restaurant, marker|
+      marker.lat restaurant.latitude
+      marker.lng restaurant.longitude
+    end
   end
 
   def new

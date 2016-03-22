@@ -5,12 +5,14 @@ ruby '2.3.0'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'carrierwave'
-gem 'coffee-rails', '~> 4.1.0'
+gem "coffee-rails"
 gem 'devise'
 gem 'faker'
 gem 'figaro'
 gem "fog"
 gem 'font-awesome-sass'
+gem "geocoder"
+gem "gmaps4rails"
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'mini_magick'
@@ -22,6 +24,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 group :production do
   gem 'rails_12factor'

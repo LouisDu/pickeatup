@@ -1,6 +1,7 @@
 class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
+  before_action :empty_cart, only: [:show]
 
   def index
     @user = current_user
@@ -63,6 +64,12 @@ class MealsController < ApplicationController
   end
 
 private
+
+  def empty_cart
+    session[:cart] = nil
+    session[:bill] = nil
+    session[:pick_up_time] = nil
+  end
 
   def set_meal
     @meal = Meal.find(params[:id])

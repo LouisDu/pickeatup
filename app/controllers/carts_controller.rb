@@ -56,6 +56,13 @@ class CartsController < ApplicationController
     redirect_to :back
   end
 
+  def empty_cart
+    session[:cart] = 0
+    session[:bill] = 0
+    session[:pick_up_time] = 0
+    redirect_to meal_path(@meal)
+  end
+
   private
 
   def order_line_params

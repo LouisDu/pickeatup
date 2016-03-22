@@ -7,13 +7,6 @@
             <div class="caption">
               <%= render 'meals/meal_card', meal: @meal %>
               <%= render 'meals/pickeatup_button', meal: @meal %>
-              <% if @meal.average_rating.presence %>
-                <%= link_to meal_reviews_path(@meal),{class: "fa.fa-star.colored"} do %>
-                Rating: <%= @meal.average_rating %> / 5
-                <% end %>
-              <% else %>
-                  No review
-              <% end %>
             </div>
           </div>
         </div>

@@ -14,5 +14,6 @@ class ReviewPolicy < ApplicationPolicy
   #   end
   #   meal_array.include? (@record.meal) && @record.user != @record.meal.restaurant.user
   # end
-  true
+    true
+  end
 end

@@ -41,7 +41,7 @@ user.profile.update!(
     last_name:    'Mulliez',
     date_of_birth: Date.parse('01/05/1991'),
     phone_number: '06 60 60 60 60',
-    remote_picture_url: 'https://s3-eu-west-1.amazonaws.com/pickeatup/uploads/gus.jpg'
+    # remote_picture_url: 'https://s3-eu-west-1.amazonaws.com/pickeatup/uploads/gus.jpg'
     )
 
 user = User.new(email: "louis.dublancq@gmail.com", password: 'pickeatup')
@@ -51,7 +51,7 @@ user.profile.update!(
     last_name:    'Dublancq',
     date_of_birth: Date.parse('30/01/1991'),
     phone_number: '06 20 20 20 20',
-    remote_picture_url: 'https://s3-eu-west-1.amazonaws.com/pickeatup/uploads/lou.jpg'
+    # remote_picture_url: 'https://s3-eu-west-1.amazonaws.com/pickeatup/uploads/lou.jpg'
     )
 
 user = User.new(email: "bn.lemaire@gmail.com", password: 'pickeatup')
@@ -61,7 +61,7 @@ user.profile.update!(
     last_name:    'Lemaire',
     date_of_birth: Date.parse('26/05/1986'),
     phone_number: '06 80 80 80 80',
-    remote_picture_url: 'https://s3-eu-west-1.amazonaws.com/pickeatup/uploads/ben.jpg'
+    # remote_picture_url: 'https://s3-eu-west-1.amazonaws.com/pickeatup/uploads/ben.jpg'
     )
 #user.profile.update_attributes!()
 
@@ -72,7 +72,7 @@ user.profile.update!(
     last_name:    'Fortaine',
     date_of_birth: Date.parse('01/01/2000'),
     phone_number: '06 40 40 40 40',
-    remote_picture_url: 'http://unsplash.it/300/300?random'
+    # remote_picture_url: 'http://unsplash.it/300/300?random'
     )
 
 puts 'Generating Restaurants'

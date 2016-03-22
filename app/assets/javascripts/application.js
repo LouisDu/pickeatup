@@ -14,5 +14,19 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
+//= require html5shiv
+//= require jflickrfeed.custom
+//= require jflickrfeed.min
+//= require jquery-1.8.3.min
+//= require jquery-scrollto
+//= require jquery.bxslider-rahisifield
+//= require jquery.prettyPhoto
+//= require jquery.quicksand
+//= require jquery.timeago
+//= require respond.min
+//= require spectragram.custom
+//= require template
+//= require tweetable.jquery
+
 //= require_tree .
+

@@ -14,7 +14,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+
+//= require html5shiv
+//= require jquery-1.8.3.min
+//= require jquery-scrollto
+//= require jquery.bxslider-rahisifield
+//= require jquery.prettyPhoto
+//= require jquery.quicksand
+//= require jquery.timeago
+//= require respond.min
+//= require spectragram.custom
+//= require template
+//= require tweetable.jquery
 //= require underscore
 //= require gmaps/google
 //= require autocomplete
 //= require_tree .
+

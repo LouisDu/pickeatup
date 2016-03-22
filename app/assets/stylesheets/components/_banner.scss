@@ -1,11 +1,11 @@
 .banner {
-color: white;
-text-align: center;
-height: 100vh;
-background-size: cover !important;
-display: flex;
-align-items: center;
-justify-content: center;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    background-size: cover !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .banner h1 {
@@ -19,10 +19,6 @@ justify-content: center;
     font-weight: lighter;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 50px;
-}
-
-.banner .btn {
-    margin-top: 20px;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {

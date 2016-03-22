@@ -1,0 +1,53 @@
+header#header
+  /! Main Navigation
+  #main-nav.navbar.navbar-default
+    /! Container
+    .container
+      /! header
+      .navbar-header
+        button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
+          span.fa.fa-bars.fa-lg
+        = link_to root_path, class: 'navbar-brand', data: { no_turbolink: 'true'}
+          h1
+            i.fa.fa-bell.alt-color
+            | Pickeatup.
+      /! /header
+      /! nav-collapse
+      .navbar-collapse.collapse
+        ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            - if current_user.orders.presence
+              li.dropdown
+                a.dropdown-toggle aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  .badge-container
+                    i.fa.fa-shopping-basket
+                    - if current_user.orders.last.status == "Pending"
+                      .badge.badge-blue.badge-order !
+
+                ul.dropdown-menu.dropdown-menu-right
+                  li = link_to 'My orders', orders_path
+            li.dropdown
+              a.dropdown-toggle aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                | Restaurants
+                span.caret
+              ul.dropdown-menu.dropdown-menu-right
+                li = link_to 'New Restaurant', new_restaurant_path
+                - if current_user.restaurants.presence
+                  li = link_to 'My Restaurants', restaurants_path
+
+            li.dropdown
+              a.dropdown-toggle.navbar-wagon-pict aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                - if current_user.profile.first_name.presence
+                  = current_user.profile.first_name
+                  = image_tag current_user.profile.picture
+                  span.caret
+                - else
+                  'Your name'
+                  = image_tag current_user.profile.picture
+                  span.caret
+              ul.dropdown-menu.dropdown-menu-right
+                li = link_to 'My profile', user_profile_path(current_user,current_user.profile)
+                li = link_to 'Sign out', destroy_user_session_path, method: :delete
+          - else
+            li = link_to 'Sign in', new_user_session_path
+            li = link_to 'Sign up', new_user_registration_path

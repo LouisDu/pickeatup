@@ -1,0 +1,46 @@
+section.page-title.dark-bg.page-bg
+  /! Overlay
+  .overlay
+    /! Container
+    .container
+      /! Title
+      .section-title
+        h2 Sign up
+        .line
+        p Deserunt sit animi totam dicta suscipit non sapiente.
+      /! Title /END
+    /! /Container
+  /! /Overlay
+section.content-block.default-bg
+  /! Container
+  .container
+    /! Form Block
+    .form-block.clearfix
+      .pull-left.col
+        h4
+          i.fa.fa-lock
+          | Already Customer
+        p By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.
+        = link_to 'Log in', new_user_session_path(), class: 'btn btn-default'
+      .pull-right.col
+        h4
+          i.fa.fa-user
+          | New Customer
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form") do |f|
+          .input-group
+            = f.label :email
+            = f.email_field :email, autofocus: true, class: 'form-control'
+          .input-group
+            = f.label :password
+            = f.password_field :password, autocomplete: "off", class: 'form-control'
+          .input-group
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+
+          .actions
+            = f.submit "Sign up", class: 'btn btn-primary'
+
+          = render "devise/shared/links"
+
+      /! /Form Block
+    /! /Container

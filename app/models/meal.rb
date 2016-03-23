@@ -16,14 +16,7 @@ class Meal < ActiveRecord::Base
   mount_uploader :picture, PhotoUploader
 
   include PgSearch
-  pg_search_scope :index_search,
-    against: [:name],
-    associated_against: {
-      restaurant: [:name]
-    },
-    :using => {
-      :tsearch => {:prefix => true}
-    }
+  multisearchable against: [:name]
 
   def average_rating
     if self.reviews.size > 0

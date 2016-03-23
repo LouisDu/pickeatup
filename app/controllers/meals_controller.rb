@@ -16,17 +16,16 @@ class MealsController < ApplicationController
 
     @all_meals = policy_scope(Meal)
 
-    @meals = Meal.index_search [search_name]
-
-    if search_name != ''
-      @meals
+    if search_name == ""
+      @meals = @all_meals
     else
+      @all_meals = PgSearch.multisearch(search_name)
       @all_meals.each do |meal|
-        @meals << meal
+        @meals << Meal.find(meal.searchable_id)
       end
     end
-
-    @meals = @meals.select { |num|  num.price <= search_price  }
+    @meals = @meals.select { |meal|  meal.meal_type.name == 'Plats'  }
+    @meals = @meals.select { |meal|  meal.price <= search_price  }
     @meals = @meals.sort_by { |meal| meal.name}
     @meals = @meals.first(4)
 

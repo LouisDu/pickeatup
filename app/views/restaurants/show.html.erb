@@ -1,8 +1,36 @@
 <div class="container">
+      <h1 class="text-center">Interface restaurant</h1>
   <div class="row">
-
     <div class="col-xs-6">
-      <h3>Restaurant meals</h3>
+      <h3 class="text-center">Vos commandes</h3>
+      <div class="row">
+        <div class="col-xs-2">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="col-xs-3"><p><strong>N°</strong></p></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-10">
+          <div class="row">
+            <div class="col-xs-3"><p><strong>Client</strong></p></div>
+            <div class="col-xs-3"><p><strong>Pick Up</strong></p></div>
+            <div class="col-xs-3"><p><strong>Montant</strong></p></div>
+            <div class="col-xs-3"><p><strong>Status</strong></p></div>
+          </div>
+        </div>
+      </div>
+      <% Order.all.reverse.each do |order| %>
+        <% if order.order_lines.first.meal.restaurant == @restaurant %>
+          <%= render 'restaurants/order_restaurant_owner', order: order %>
+        <% end %>
+      <% end %>
+
+    </div>
+    <div class="col-xs-6">
+      <h3 class="text-center">Votre restaurant</h3>
+      <%= render 'restaurants/restaurant_card', restaurant: @restaurant %>
+      <h3 class="text-center">Vos plats au menu</h3>
       <div class="row">
         <div class="col-xs-12">
           <% if @restaurant.meals.blank? %>
@@ -19,17 +47,6 @@
           <%= link_to 'Add a meal', new_restaurant_meal_path(@restaurant) %>
         </div>
       </div>
-
-    </div>
-
-    <div class="col-xs-6">
-      <h1><%= @restaurant.name %></h1>
-
-      <% if @restaurant.logo.presence %>
-        <%= image_tag image_path(@restaurant.logo)%>
-      <% end %>
-
-      <h2><%= @restaurant.address %></h2>
     </div>
 
   </div>

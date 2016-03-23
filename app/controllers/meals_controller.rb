@@ -13,6 +13,8 @@ class MealsController < ApplicationController
     search_price = 500 unless search_price > 0
     search_name = params.fetch(:search_meal, {})[:query_name].to_s
     search_resto = params.fetch(:search_meal, {})[:query_restaurant].to_s
+    search_address = params.fetch(:search_meal, {})[:query_address].to_s
+
 
     @all_meals = policy_scope(Meal)
 
@@ -24,8 +26,11 @@ class MealsController < ApplicationController
         @meals << Meal.find(meal.searchable_id)
       end
     end
-    @meals = @meals.select { |meal|  meal.meal_type.name == 'Plats'  }
-    @meals = @meals.select { |meal|  meal.price <= search_price  }
+
+
+    @meals = @meals.select { |meal| meal.restaurant.distance_from(search_address) <= 1 } unless search_address == ""
+    @meals = @meals.select { |meal| meal.meal_type.name == 'Plats' }
+    @meals = @meals.select { |meal| meal.price <= search_price  }
     @meals = @meals.sort_by { |meal| meal.name}
     @meals = @meals.first(4)
 

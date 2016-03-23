@@ -5,7 +5,7 @@
   <div class="col-xs-2"><p><%= order.bill %> €</p></div>
   <%= simple_form_for order do |form| %>
     <div class="col-xs-3">
-      <%= form.select :status, ["pending", "accepted", "canceled", "pick-up"], class: ' input-sm', label: false %>
+      <%= form.select :status, ["Pending", "Accepted", "Canceled", "Pick-up"], class: ' input-sm', label: false %>
     </div>
     <div class="col-xs-2"><%= form.button :submit, 'Ok', class: 'btn btn-default btn-xs' %></div>
   <% end %>

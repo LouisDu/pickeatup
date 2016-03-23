@@ -1,5 +1,14 @@
-<h4><%= restaurant.name %></h4>
-<% if restaurant.logo.presence %>
-  <div><%= image_tag image_path(restaurant.logo)%></div>
-<% end %>
-<p><%= restaurant.address %></p>
+<div class="row">
+  <div class="col-xs-4">
+    <div class="avatar-extra-large"><%= image_tag image_path(restaurant.logo)%></div>
+  </div>
+  <div class="col-xs-8">
+    <h4><%= restaurant.name %></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p><strong>Adresse: </strong><%= restaurant.address %></p>
+  </div>
+</div>
+<hr>

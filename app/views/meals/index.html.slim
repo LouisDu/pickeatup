@@ -14,11 +14,11 @@ section.page-title.dark-bg.page-bg
       .row
         = simple_form_for :search_meal, url: meals_path, method: :get  do |form|
           .col-xs-6
-            = form.input :query_address, as: :string, label: false , placeholder: 'Votre adresse...', input_html: { class: "form-control", id:"user_input_autocomplete_address" }
+            = form.input :query_address, as: :string, label: false , placeholder: 'Votre adresse...', input_html: { class: "form-control", id:"user_input_autocomplete_address", value: params.fetch(:search_meal, {})[:query_address] }
           .col-xs-2
-            = form.input :query_name, as: :string, label: false , placeholder: 'Couscous', input_html: { class: "form-control" }
+            = form.input :query_name, as: :string, label: false , placeholder: 'Couscous', input_html: { class: "form-control", value: params.fetch(:search_meal, {})[:query_name] }
           .col-xs-2
-            = form.input :query_max_price, collection: 5..25, label: false , input_html: { class: "form-control" }
+            = form.input :query_max_price, collection: 5..25, label: false , input_html: { class: "form-control", value: params.fetch(:search_meal, {})[:query_max_price] }
           .col-xs-2
             = form.submit "Pick Eat Up", class: 'btn btn-primary'
 

@@ -31,7 +31,7 @@ class MealsController < ApplicationController
     @meals = @meals.select { |meal| meal.restaurant.distance_from(search_address) <= 1 } unless search_address == ""
     @meals = @meals.select { |meal| meal.meal_type.name == 'Plats' }
     @meals = @meals.select { |meal| meal.price <= search_price  }
-    @meals = @meals.sort_by { |meal| meal.name}
+    @meals = @meals.sort_by { |meal| meal.name }
     @meals = @meals.first(4)
 
     @markers = Gmaps4rails.build_markers(@meals) do |meal, marker|

@@ -7,19 +7,16 @@ section.page-title.dark-bg.page-bg
       .section-title
         h2  Affinez votre selection selon vos envies
       .row.text-center
-        .col-xs-3 Nom de plat
-        .col-xs-3 Nom de restaurant
-        .col-xs-2 Categorie
+        .col-xs-6 Adresse
+        .col-xs-2 Nom de plat
         .col-xs-2 Prix maximum
         .col-xs-2
       .row
         = simple_form_for :search_meal, url: meals_path, method: :get  do |form|
-          .col-xs-3
-            = form.input :query_name, as: :string, label: false , placeholder: 'Couscous', input_html: { class: "form-control" }
-          .col-xs-3
-            = form.input :query_restaurant, as: :string, label: false , placeholder: 'Au Méditérranée', input_html: { class: "form-control" }
+          .col-xs-6
+            = form.input :query_address, as: :string, label: false , placeholder: 'Votre adresse...', input_html: { class: "form-control", id:"user_input_autocomplete_address" }
           .col-xs-2
-            = form.input :query_category, as: :string, label: false , placeholder: 'Marocain', input_html: { class: "form-control" }
+            = form.input :query_name, as: :string, label: false , placeholder: 'Couscous', input_html: { class: "form-control" }
           .col-xs-2
             = form.input :query_max_price, collection: 5..25, label: false , input_html: { class: "form-control" }
           .col-xs-2

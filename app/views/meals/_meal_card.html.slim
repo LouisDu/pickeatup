@@ -9,15 +9,20 @@ article.blog-entry
         = meal.prep_time
         ' min
     span.author
-      i.fa.fa-dollar
+      i.fa.fa-euro
       a href="#"
         = meal.price
-        '$
+        '€
     - if meal.average_rating.presence
       = link_to meal_reviews_path(meal),{class: "fa.fa-star.colored"}
-        'Rating:
-        = meal.average_rating
-        '/ 5
+        span.author
+          'Note:
+          = meal.average_rating
+          '/ 5
     - else
-      'No review
+      span.author
+        'Non noté
+    = link_to meal_reviews_path(meal),{class: "fa.fa-star.colored"}
+      span.author
+        'Voir et donner son avis
   p = meal.description

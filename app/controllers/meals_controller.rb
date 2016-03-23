@@ -4,13 +4,32 @@ class MealsController < ApplicationController
   before_action :empty_cart, only: [:index]
 
   def index
+    @meals = []
     @user = current_user
     @cart = OrderLine.new
     @order = Order.new
-    price1 = params.fetch(:search_meal, {})[:query_max_price].to_i
-    price1 = 500 unless price1 > 0
-    @meals = policy_scope(MealType.find_by_name("Plats").meals.where('price <= :price1', { price1: price1 }))
-    # PgSearch.multisearch(:query_name)
+
+    search_price = params.fetch(:search_meal, {})[:query_max_price].to_i
+    search_price = 500 unless search_price > 0
+    search_name = params.fetch(:search_meal, {})[:query_name].to_s
+    search_resto = params.fetch(:search_meal, {})[:query_restaurant].to_s
+
+    @all_meals = policy_scope(Meal)
+
+    @meals = Meal.index_search [search_name]
+
+    if search_name != ''
+      @meals
+    else
+      @all_meals.each do |meal|
+        @meals << meal
+      end
+    end
+
+    @meals = @meals.select { |num|  num.price <= search_price  }
+    @meals = @meals.sort_by { |meal| meal.name}
+    @meals = @meals.first(4)
+
     @markers = Gmaps4rails.build_markers(@meals) do |meal, marker|
      marker.lat meal.restaurant.latitude
      marker.lng meal.restaurant.longitude

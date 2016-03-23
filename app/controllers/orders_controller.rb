@@ -40,9 +40,24 @@ class OrdersController < ApplicationController
     redirect_to @order
   end
 
+  def edit
+    @order = Order.find(params[:id])
+    authorize @order
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    authorize @order
+    if @order.update(order_params)
+      redirect_to :back
+    else
+      render :back
+    end
+  end
+
 private
   def order_params
-    params.require(:order).permit(:user_id)
+    params.require(:order).permit(:user_id, :status)
   end
 
 end

@@ -22,7 +22,8 @@ header#header
                   .badge-container
                     i.fa.fa-shopping-basket
                     - if current_user.orders.last.status == "Pending"
-                      .badge.badge-blue.badge-order !
+                      .badge.badge-blue.badge-order
+                        '!
 
                 ul.dropdown-menu.dropdown-menu-right
                   li = link_to 'My orders', orders_path

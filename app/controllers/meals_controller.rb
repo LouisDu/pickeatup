@@ -30,7 +30,7 @@ class MealsController < ApplicationController
     @meals = @meals.select { |meal| meal.restaurant.distance_from(@search_params[:address]) <= 1 } unless @search_params[:address] == ""
     @meals = @meals.select { |meal| meal.meal_type.name == 'Plats' }
     @meals = @meals.select { |meal| meal.price <= @search_params[:price]  }
-    @meals = @meals.sort_by { |meal| meal.name}
+    @meals = @meals.sort_by { |meal| meal.average_rating }.reverse
     @meals = @meals.first(4)
 
     @markers = Gmaps4rails.build_markers(@meals) do |meal, marker|
@@ -48,8 +48,7 @@ class MealsController < ApplicationController
     authorize @meal
     @restaurant_meal = Meal.where(restaurant_id: @meal.restaurant_id)
     @entree = @restaurant_meal.where(meal_type_id: 1)
-    @plat = @restaurant_meal.where(meal_type_id: 2)
-    @dessert = @restaurant_meal.where(meal_type_id: 3)
+    @plat = @restaurant_meal.where(meal_type_id: 2).where.not(name: @meal.name)
     @boisson = @restaurant_meal.where(meal_type_id: 4)
   end
 

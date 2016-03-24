@@ -3,11 +3,11 @@
     .banner-content
       h1 Pick-Eat Up
       p Un click, une foulée, un pick-up.
-      form.form-inline action="/meals"
-        .input-group
-          input.form-control.input-lg placeholder="Grand Place, Lille" type="text"
-          span.input-group-btn
-            input.btn.btn-lg.btn-primary type="submit" value="Pick-Eat Up"
+      .row
+        .col-xs-4.col-xs-offset-4
+          = simple_form_for :search_meal, url: meals_path, method: :get  do |form|
+            = form.input :query_address, as: :string, label: false , placeholder: 'Votre adresse...', input_html: { class: "form-control", id:"user_input_autocomplete_address" }
+            = form.submit "Pick Eat Up", class: 'btn btn-primary'
 
 .section.content-block.default-bg
   .container
@@ -70,13 +70,14 @@
       p
     .contact-form.home-contact
       .clearfix
-        .col-xs-12.col-sm-6col-sm-offset-3
+        .col-xs-12.col-sm-6.col-sm-offset-3
           input.form-control placeholder=("Full Names") type="text" /
           input.form-control placeholder=("E-Mail Address") type="text" /
           input.form-control placeholder=("Phone No.") type="text" /
           input.form-control placeholder="Subject" type="text" /
           textarea.form-control placeholder=("You Message...")
           button.btn.btn-primary type="submit"  Envoyez
+
 
 
 

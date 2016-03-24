@@ -9,8 +9,7 @@ class Restaurant < ActiveRecord::Base
                         :locality,
                         :administrative_area_level_1,
                         :postal_code,
-                        :country,
-                        :logo
+                        :country
 
   validates_uniqueness_of :name
 

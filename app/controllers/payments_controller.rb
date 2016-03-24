@@ -24,7 +24,7 @@ class PaymentsController < ApplicationController
   )
   @order.status = "Payed"
   @order.save
-  redirect_to order_path(@order)
+  redirect_to orders_path
 
   rescue Stripe::CardError => e
   flash[:error] = e.message

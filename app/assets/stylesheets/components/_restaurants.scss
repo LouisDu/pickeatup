@@ -1,0 +1,19 @@
+.restaurants {
+  margin-bottom: 30px;
+  .restaurant {
+    h4 {
+      margin-bottom: 5px;
+      margin-top: 15px;
+    }
+    .logo {
+      max-height: 100px;
+    }
+    hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .thumbnail {
+      padding: 20px;
+    }
+  }
+}

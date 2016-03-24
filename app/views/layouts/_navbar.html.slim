@@ -39,7 +39,8 @@ header#header
               a.dropdown-toggle.navbar-wagon-pict aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
                 - if current_user.profile.first_name.presence
                   = current_user.profile.first_name
-                  = image_tag current_user.profile.picture
+                  - if current_user.profile.first_name.presence
+                    = image_tag current_user.profile.picture
                   span.caret
                 - else
                   'Your name'

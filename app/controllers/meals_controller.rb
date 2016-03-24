@@ -10,13 +10,12 @@ class MealsController < ApplicationController
     @order = Order.new
 
     @search_params = {
-      price: params.fetch(:search_meal, {})[:query_max_price].to_i > 0 ? params.fetch(:search_meal, {})[:query_max_price].to_i : 100,
+      price: params.fetch(:search_meal, {})[:query_max_price].to_i > 0 ? params.fetch(:search_meal, {})[:query_max_price].to_i : 5000,
       name: params.fetch(:search_meal, {})[:query_name].to_s,
       address: params.fetch(:search_meal, {})[:query_address].to_s
     }
 
     @all_meals = policy_scope(Meal)
-
     if @search_params[:name] == ""
       @meals = @all_meals
     else
@@ -29,7 +28,7 @@ class MealsController < ApplicationController
 
     @meals = @meals.select { |meal| meal.restaurant.distance_from(@search_params[:address]) <= 1 } unless @search_params[:address] == ""
     @meals = @meals.select { |meal| meal.meal_type.name == 'Plats' }
-    @meals = @meals.select { |meal| meal.price <= @search_params[:price]  }
+    @meals = @meals.select { |meal| meal.price <= @search_params[:price] }
     @meals = @meals.sort_by { |meal| meal.average_rating }.reverse
     @meals = @meals.first(4)
 

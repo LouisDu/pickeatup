@@ -1,4 +1,4 @@
-<% if @boisson.count > 1  %>
+<% if !@boisson.nil?  %>
   <h2>Boissons</h2>
   <%@boisson.each do |meal| %>
     <div class="thumbnail caption">
@@ -11,7 +11,7 @@
   <% end %>
 <% end %>
 
-<% if @entree.count > 1   %>
+<% if !@entree.nil?   %>
   <h2>Entrees</h2>
   <%@entree.each do |meal| %>
     <div class="thumbnail caption">
@@ -24,7 +24,7 @@
   <% end %>
 <% end %>
 
-<% if @plat.count > 1 %>
+<% if !@plat.nil? %>
   <h2>Plats</h2>
   <%@plat.each do |meal| %>
     <div class="thumbnail caption">
@@ -37,7 +37,7 @@
   <% end %>
 <% end %>
 
-<% if @dessert.count > 1 %>
+<% if !@dessert.nil? %>
   <h2>Desserts</h2>
   <%@dessert.each do |meal| %>
     <div class="thumbnail caption">

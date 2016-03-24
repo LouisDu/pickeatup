@@ -19,7 +19,7 @@ article.blog-entry
       = link_to meal_reviews_path(meal),{class: "fa.fa-star.colored"}
         span.author
           'Note:
-          = meal.average_rating
+          = meal.average_rating.round(2)
           '/ 5
     - else
       span.author

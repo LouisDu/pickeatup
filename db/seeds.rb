@@ -138,7 +138,7 @@ puts 'Generating Restaurants'
 
 # BEN resto
 
- chezben = lucce.restaurants.build(
+ chezben = ben.restaurants.build(
     name:             "Chez Benamou",
     street_number:    (1..30).to_a.sample,
     route:            "Rue de la cles",
@@ -577,7 +577,7 @@ prep = (10..25).to_a
 
 # meals resto FRANCAIS CHEZ BENAMOU
 
-  escargots = mamounia.meals.build(
+  escargots = chezben.meals.build(
     name:             "12 escargots de Bourgogne",
     price:            price_e.sample(1).first,
     prep_time:        prep_e.sample(1).first,
@@ -586,7 +586,7 @@ prep = (10..25).to_a
   )
   escargots.save!
 
-  huitres = mamounia.meals.build(
+  huitres = chezben.meals.build(
     name:             "Huitres  N°3",
     price:            price_e.sample(1).first,
     prep_time:        prep_e.sample(1).first,
@@ -595,7 +595,7 @@ prep = (10..25).to_a
     )
   huitres.save!
 
-  grenouille = mamounia.meals.build(
+  grenouille = chezben.meals.build(
     name:             "Quatre cuisses de grenouille",
     price:            price_e.sample(1).first,
     prep_time:        prep_e.sample(1).first,
@@ -604,7 +604,7 @@ prep = (10..25).to_a
     )
   grenouille.save!
 
-  sole = mamounia.meals.build(
+  sole = chezben.meals.build(
     name:             "La sole",
     price:            price.sample(1).first,
     prep_time:        prep.sample(1).first,
@@ -613,7 +613,7 @@ prep = (10..25).to_a
     )
   sole.save!
 
-  agneau = mamounia.meals.build(
+  agneau = chezben.meals.build(
     name:             "Le quintuple d'Agneau",
     price:            price.sample(1).first,
     prep_time:        prep.sample(1).first,
@@ -622,7 +622,7 @@ prep = (10..25).to_a
     )
   agneau.save!
 
-  bavette = mamounia.meals.build(
+  bavette = chezben.meals.build(
     name:             "la bavette d'Aloyau",
     price:            price.sample(1).first,
     prep_time:        prep.sample(1).first,
@@ -631,7 +631,7 @@ prep = (10..25).to_a
     )
   bavette.save!
 
-  cbrule = mamounia.meals.build(
+  cbrule = chezben.meals.build(
     name:             "Crème brûlée",
     price:            price_e.sample(1).first,
     prep_time:        prep_e.sample(1).first,
@@ -640,7 +640,7 @@ prep = (10..25).to_a
     )
   cbrule.save!
 
-  baklavas = mamounia.meals.build(
+  baklavas = chezben.meals.build(
     name:             "Oeufs à la neige",
     price:            price_e.sample(1).first,
     prep_time:        prep_e.sample(1).first,
@@ -649,7 +649,7 @@ prep = (10..25).to_a
     )
   baklavas.save!
 
-  champ = mamounia.meals.build(
+  champ = chezben.meals.build(
     name:             "Tsarine champagne",
     price:            10,
     prep_time:        1,
@@ -658,7 +658,7 @@ prep = (10..25).to_a
     )
   champ.save!
 
-  perrier = mamounia.meals.build(
+  perrier = chezben.meals.build(
     name:             "Perrier",
     price:            2,
     prep_time:        1,
@@ -667,7 +667,7 @@ prep = (10..25).to_a
     )
   perrier.save!
 
-  evian = mamounia.meals.build(
+  evian = chezben.meals.build(
     name:             "Evian",
     price:            2,
     prep_time:        1,
@@ -882,7 +882,7 @@ puts 'Generating REVIEWS'
     )
   review.save!
 
-# review pour resto MAMOUNIA
+# review pour resto BENAMOU
 
 review = bavette.reviews.build(
     rating:           4,

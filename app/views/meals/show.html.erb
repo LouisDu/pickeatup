@@ -1,4 +1,4 @@
-<section class="page-title dark-bg page-bg">
+<!-- <section class="page-title dark-bg page-bg"> -->
 <!--   <div class="overlay">
     <div class="container">
       <div class="section-title">
@@ -13,8 +13,8 @@
     </div>
 
   </div> -->
-</section>
-<div class="container">
+<!-- </section> -->
+<div class="container order">
   <div class="row">
     <div class="col-xs-6 ">
       <div class="row">
@@ -29,7 +29,7 @@
       </div>
       <%= render 'meals/meals_card', meal: @meal %>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-6 ticket">
       <h3>Mon panier</h3>
       <hr>
       <%= render 'cart', cart_array: session[:cart], bill: session[:bill], pick_up_time: session[:pick_up_time]%>

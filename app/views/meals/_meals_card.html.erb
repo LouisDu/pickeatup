@@ -1,53 +1,85 @@
 <% if !@boisson.nil?  %>
   <h2>Boissons</h2>
-  <%@boisson.each do |meal| %>
-    <div class="thumbnail caption">
-      <%= image_tag('http://unsplash.it/300/200', class: 'img-responsive') %>
-      <strong><p><%= meal.name %></p></strong>
-      <p>Prix: <%= meal.price %> $</p>
-      <p><%= meal.description %></p>
-      <%= render 'meals/pickeatup_button', meal: meal %>
-    </div>
-  <% end %>
+  <div class="row bloc-meals">
+    <% @boisson.each do |meal| %>
+      <div class="col-xs-6 boisson">
+        <div class="thumbnail caption">
+          <% if meal.picture.url %>
+            <%= image_tag(meal.picture.url, class: 'img-responsive') %>
+          <% else %>
+            <%= image_tag('picto-cloche-boucher-box.png', class: 'img-responsive') %>
+          <% end %>
+          <p class="name"><strong><%= meal.name %></strong></p>
+          <p class="price">Prix: <%= meal.price %> $</p>
+          <p class="description"><%= meal.description %></p>
+          <%= render 'meals/pickeatup_button', meal: meal %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <% if !@entree.nil?   %>
   <h2>Entrees</h2>
-  <%@entree.each do |meal| %>
-    <div class="thumbnail caption">
-      <%= image_tag('http://unsplash.it/300/200', class: 'img-responsive') %>
-      <strong><p><%= meal.name %></p></strong>
-      <p>Prix: <%= meal.price %> $</p>
-      <p><%= meal.description %></p>
-      <%= render 'meals/pickeatup_button', meal: meal %>
-    </div>
-  <% end %>
+  <div class="row bloc-meals">
+    <%@entree.each do |meal| %>
+      <div class="col-xs-6 meal">
+        <div class="thumbnail caption">
+          <% if meal.picture.url %>
+            <%= image_tag(meal.picture.url, class: 'img-responsive') %>
+          <% else %>
+            <%= image_tag('picto-cloche-boucher-box.png', class: 'img-responsive') %>
+          <% end %>
+          <p class="name"><strong><%= meal.name %></strong></p>
+          <p class="price">Prix: <%= meal.price %> $</p>
+          <p class="description"><%= meal.description %></p>
+          <%= render 'meals/pickeatup_button', meal: meal %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <% if !@plat.nil? %>
   <h2>Plats</h2>
-  <%@plat.each do |meal| %>
-    <div class="thumbnail caption">
-      <%= image_tag('http://unsplash.it/300/200', class: 'img-responsive') %>
-      <strong><p><%= meal.name %></p></strong>
-      <p>Prix: <%= meal.price %> $</p>
-      <p><%= meal.description %></p>
-      <%= render 'meals/pickeatup_button', meal: meal %>
-    </div>
-  <% end %>
+  <div class="row bloc-meals">
+    <%@plat.each do |meal| %>
+      <div class="col-xs-6 plat">
+        <div class="thumbnail caption">
+          <% if meal.picture.url %>
+            <%= image_tag(meal.picture.url, class: 'img-responsive') %>
+          <% else %>
+            <%= image_tag('picto-cloche-boucher-box.png', class: 'img-responsive') %>
+          <% end %>
+          <p class="name"><strong><%= meal.name %></p></strong>
+          <p class="price">Prix: <%= meal.price %> $</p>
+          <p class="description"><%= meal.description %></p>
+          <%= render 'meals/pickeatup_button', meal: meal %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <% if !@dessert.nil? %>
   <h2>Desserts</h2>
-  <%@dessert.each do |meal| %>
-    <div class="thumbnail caption">
-      <%= image_tag('http://unsplash.it/300/200', class: 'img-responsive') %>
-      <strong><p><%= meal.name %></p></strong>
-      <p>Prix: <%= meal.price %> $</p>
-      <p><%= meal.description %></p>
-      <%= render 'meals/pickeatup_button', meal: meal %>
-    </div>
-  <% end %>
+  <div class="row bloc-meals">
+    <%@dessert.each do |meal| %>
+      <div class="col-xs-6 plat">
+        <div class="thumbnail caption">
+          <% if meal.picture.url %>
+            <%= image_tag(meal.picture.url, class: 'img-responsive') %>
+          <% else %>
+            <%= image_tag('picto-cloche-boucher-box.png', class: 'img-responsive') %>
+          <% end %>
+          <p class="name"><strong><%= meal.name %></strong></p>
+          <p class="price">Prix: <%= meal.price %> $</p>
+          <p class="description"><%= meal.description %></p>
+          <%= render 'meals/pickeatup_button', meal: meal %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 

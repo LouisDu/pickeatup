@@ -1,0 +1,23 @@
+.ticket {
+  hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+.ticket-line {
+  margin-bottom: 4px;
+  & > div {
+    height: 36px;
+    p {
+      line-height: 36px;
+      text-align: left;
+    }
+    .quantity {
+      text-align: center;
+    }
+  }
+}
+
+.no-padding {
+  padding: 0;
+}

@@ -13,6 +13,8 @@ article.blog-entry
       a href="#"
         = meal.price
         '€
+    br
+    br
     - if meal.average_rating.presence
       = link_to meal_reviews_path(meal),{class: "fa.fa-star.colored"}
         span.author
@@ -24,5 +26,5 @@ article.blog-entry
         'Non noté
     = link_to meal_reviews_path(meal),{class: "fa.fa-star.colored"}
       span.author
-        'Voir et donner son avis
+        'Les avis
   p = meal.description

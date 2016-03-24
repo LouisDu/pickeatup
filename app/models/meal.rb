@@ -22,6 +22,7 @@ class Meal < ActiveRecord::Base
     if self.reviews.size > 0
         self.reviews.average(:rating)
     else
+      -1
     end
   end
 

@@ -19,11 +19,10 @@ header#header
             - if current_user.orders.presence
               li.dropdown
                 a.dropdown-toggle aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
-                  .badge-container
-                    i.fa.fa-shopping-basket
-                    - if current_user.orders.last.status == "Pending"
-                      .badge.badge-blue.badge-order
-                        '!
+                  | Orders
+                  - if current_user.orders.last.status == "Pending"
+                    .badge.badge-blue.badge-order
+                      = current_user.orders.where(status: 'Pending').count
 
                 ul.dropdown-menu.dropdown-menu-right
                   li = link_to 'My orders', orders_path

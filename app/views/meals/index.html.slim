@@ -18,7 +18,7 @@ section.page-title.dark-bg.page-bg
           .col-xs-2
             = form.input :query_name, as: :string, label: false , placeholder: 'Couscous', input_html: { class: "form-control", value: @search_params[:name] }
           .col-xs-2
-            = form.input :query_max_price, collection: 5..25, label: false , input_html: { class: "form-control", value: @search_params[:price] }
+            = form.input :query_max_price, collection: 5..25, label: false , input_html: { class: "form-control", value: @search_params[:max_price] }
           .col-xs-2
             = form.submit "Pick Eat Up", class: 'btn btn-primary'
 

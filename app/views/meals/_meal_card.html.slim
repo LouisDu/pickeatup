@@ -1,5 +1,9 @@
 article.blog-entry
-  = image_tag('picto-cloche-boucher-box.png', class: 'img-responsive header-pic')
+  <% if meal.picture.url %>
+    = image_tag(meal.picture.url, class: 'img-responsive header-pic')
+  <% else %>
+    = image_tag('picto-cloche-boucher-box.png', class: 'img-responsive header-pic')
+  <% end %>
   h4
     = meal.name
   .meta

@@ -1,5 +1,5 @@
 article.blog-entry
-  = image_tag('http://unsplash.it/300/200', class: 'img-responsive')
+  = image_tag('picto-cloche-boucher-box.png', class: 'img-responsive header-pic')
   h4
     = meal.name
   .meta
@@ -18,13 +18,13 @@ article.blog-entry
     - if meal.average_rating.presence
       = link_to meal_reviews_path(meal),{class: "fa.fa-star.colored"}
         span.author
-          'Note:
+          i.fa.fa-star-o
           = meal.average_rating.round(2)
           '/ 5
     - else
       span.author
         'Non noté
     = link_to meal_reviews_path(meal),{class: "fa.fa-star.colored"}
-      span.author
-        'Les avis
+      span.author.fa
+        '&nbsp;Les avis (#{meal.reviews.length})
   p = meal.description

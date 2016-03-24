@@ -8,6 +8,15 @@
   <div class="row">
     <div class="col-xs-12">
       <%= render 'orders/order_card', order: @order %>
+      <%= form_tag order_payments_path(@order) do %>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-name="My PickEatUp Order"
+      data-description="Commande n° <%= @order.id %>"
+      data-amount="<%= @order.set_bill*100 %>"
+      data-currency="EUR"></script>
+  <% end %>
     </div>
   </div>
   <div class="row">

@@ -1,29 +1,43 @@
-<div class="container">
+<div class="container restaurants">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12">
       <h3>Restaurant meals</h3>
-      <div class="row">
-        <div class="col-xs-12">
-          <% if current_user.restaurants.blank? %>
-              There is no restaurant
-          <% else %>
-            <% current_user.restaurants.each do |restaurant| %>
-              <p><%= restaurant.name %></p>
-              <%= link_to 'Show', restaurant_path(restaurant) %>
-              <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
-              <%= link_to 'Delete', restaurant_path(restaurant), method: :delete %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="col-xs-12">
-          <%= link_to 'Add a restaurant', new_restaurant_path %>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-xs-6">
-      <h1>Map</h1>
     </div>
   </div>
+  <div class="row">
+     <% if current_user.restaurants.blank? %>
+        <div class="col-xs-12">
+          <p>There is no restaurant</p>
+        </div>
+      <% else %>
+        <% current_user.restaurants.each do |restaurant| %>
+          <div class="col-xs-6 restaurant">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="caption thumbnail">
+                  <% if restaurant.logo.url %>
+                    <%= image_tag(restaurant.logo.url, class: "img-responsive logo") %>
+                  <% else %>
+                    <%= image_tag("restaurant-logo.jpg", class: "img-responsive logo") %>
+                  <% end %>
+                  <h4><%= restaurant.name %></h4>
+                  <p><strong><%= restaurant.restaurant_type.name %></strong></p>
+                  <hr>
+                  <p><%= restaurant.address %></p>
+                  <%= link_to 'Show', restaurant_path(restaurant), class: "btn btn-primary" %>
+                  <%= link_to 'Edit', edit_restaurant_path(restaurant), class: "btn btn-primary" %>
+                  <%= link_to 'Delete', restaurant_path(restaurant), class: "btn btn-primary", method: :delete %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+          <%= link_to 'Add a restaurant', new_restaurant_path, class: "btn btn-primary" %>
+      </div>
+    </div>
 </div>
 

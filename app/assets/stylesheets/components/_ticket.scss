@@ -3,6 +3,9 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
+  form {
+    text-algin: right;
+  }
 }
 .ticket-line {
   margin-bottom: 4px;
@@ -20,4 +23,10 @@
 
 .no-padding {
   padding: 0;
+}
+
+.container.ticket {
+  border: 1px solid #CECECE;
+  margin-bottom: 30px;
+  padding-top: 20px;
 }

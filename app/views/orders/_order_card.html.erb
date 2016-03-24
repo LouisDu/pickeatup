@@ -30,7 +30,7 @@
                 <%= order_line.meal.name %>
               </p>
             </div>
-            <div class="col-xs-3"><p><%= order_line.meal_price %> $</p></div>
+            <div class="col-xs-3"><p><%= order_line.meal_price %> €</p></div>
           </div>
         <% end %>
     </div>
@@ -41,7 +41,7 @@
       <div class="row">
         <div class="col-xs-8">Pick Up Time:  <%= order.pick_up_time.strftime("%H:%M")%></div>
         <div class="col-xs-1"></div>
-        <div class="col-xs-3">Total: <%= order.bill %> $</div>
+        <div class="col-xs-3">Total: <%= order.bill %> €</div>
       </div>
     </div>
   </div>

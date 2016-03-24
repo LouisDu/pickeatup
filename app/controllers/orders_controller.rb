@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
     @order.save
 
-    redirect_to @order
+    redirect_to new_order_payment_path(@order)
   end
 
   def edit

@@ -1,32 +1,54 @@
 #footer
-  footer
-    hr.footer-divider/
+  .top
     .container
-      .row.footer-content
-        .col-sm-12.space-4.space-top-4.show-sm
-          ul.list-inline.text-center.h5
+      .row
+        .col-sm-3.col-md-3
+          h5 Ce site a été développé par
+          ul.links.underline
             li
-              a.link-contrast href="/about/about-us"  À propos
+              a href="#"  Louis dit Blandu
             li
-              a.link-contrast href="/careers"  Carrières
+              a href="#"  Augustin dit Le Gus
             li
-              a.link-contrast href="/contact"  Contact
+              a href="#"  Benjamin dit l'escroc
+        .col-sm-3.col-md-3
+          h5 Le twitter c'est important !
+          #footer-tweets
+        .col-sm-3.col-md-3
+          h5 Le saviez-vous ?
+          ul.links.underline
             li
-              a.link-contrast href="/terms"  CG & confidentialité
-      .text-center
-        h2.h5.space-4.hide-sm Rejoignez-nous
-        ul.list-inline
-          li
-            a.link-contrast.footer-icon-container href="https://www.facebook.com/lewagonformation"
-              i.fa.fa-facebook
-          li
-            a.link-contrast.footer-icon-container href="https://twitter.com/lewagonlille"
-              i.fa.fa-twitter
-          li
-            a.link-contrast.footer-icon-container href="https://www.linkedin.com/company/le-wagon"
-              i.fa.fa-youtube
-          li
-            a.link-contrast.footer-icon-container href="https://www.instagram.com/"
-              i.fa.fa-instagram
-        .space-top-2.text-muted
-          | \&copy; Pick-Eat Up
+              a href="#"  A propos
+            li
+              a href="#"  Informations générales
+            li
+              a href="#"  Conditions générales
+            li
+              a href="#"  Merci Flix
+        .col-sm-3.col-md-3
+          h5 newsletter
+          p Restez informé des nouvelles fonctionnalités proposées par Pickeatup.
+          .input-group.newsletter-signup
+            input.form-control placeholder=("Email Address") type="text" /
+            span.input-group-btn
+              button.btn.btn-primary type="button"  S'inscrire
+  .bottom
+    .container
+      ul.social-buttons.colored-bg-on-hover.round.clearfix
+        li
+          a href="#"
+            i.fa.fa-facebook
+        li
+          a href="#"
+            i.fa.fa-skype
+        li
+          a href="#"
+            i.fa.fa-twitter
+        li
+          a href="#"
+            i.fa.fa-rss
+        li
+          a href="#"
+            i.fa.fa-google-plus
+      span.copy-text Incroyable un &copy; :) 2016 Pickeatup. Made in Wagon Lille
+

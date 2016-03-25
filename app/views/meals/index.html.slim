@@ -20,7 +20,7 @@ section.page-title.dark-bg.page-bg
           .col-xs-2
             = form.input :query_max_price, collection: 5..25, label: false , input_html: { class: "form-control", value: @search_params[:max_price] }
           .col-xs-2
-            = form.submit "Pick Eat Up", class: 'btn btn-primary'
+            = form.submit "Pickeatup.", class: 'btn btn-primary'
 
 section.content-block.default-bg
   .container
@@ -28,7 +28,7 @@ section.content-block.default-bg
       .col-xs-12.col-sm-6
         .row
           - if @meals.blank?
-            'There is no meal
+            'Aucun Repas
           - else
             - @meals.each do |meal|
               .col-xs-12.col-sm-6

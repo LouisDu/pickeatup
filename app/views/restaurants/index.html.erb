@@ -1,13 +1,13 @@
 <div class="container restaurants">
   <div class="row">
     <div class="col-xs-12">
-      <h3>Restaurant meals</h3>
+      <h3>Repas de mon Restau</h3>
     </div>
   </div>
   <div class="row">
      <% if current_user.restaurants.blank? %>
         <div class="col-xs-12">
-          <p>There is no restaurant</p>
+          <p>Aucun Restaurant</p>
         </div>
       <% else %>
         <% current_user.restaurants.each do |restaurant| %>
@@ -36,7 +36,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12">
-          <%= link_to 'Add a restaurant', new_restaurant_path, class: "btn btn-primary" %>
+          <%= link_to 'Ajouter un Restau', new_restaurant_path, class: "btn btn-primary" %>
       </div>
     </div>
 </div>

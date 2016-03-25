@@ -42,7 +42,7 @@
       <div class="row">
         <div class="col-xs-12">
           <% if @restaurant.meals.blank? %>
-              There is no meal
+              Aucun Repas
           <% else %>
             <% @restaurant.meals.each do |meal| %>
                 <%= render 'meals/meal_card_owner', meal: meal %>

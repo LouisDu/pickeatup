@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
 
-      <h1>New meal </h1>
+      <h1>Nouveau Repas </h1>
 
       <%= simple_form_for [@restaurant, @meal]  do |form| %>
         <%= form.input :name %>
         <%= form.input :price %>
         <%= form.input :prep_time, as: :integer %>
-        <%= form.input :description, as: :text, placeholder: 'Describe your delicious meal ...'%>
+        <%= form.input :description, as: :text, placeholder: 'Description du Repas ...'%>
         <%= form.association :meal_type %>
         <%= form.input :picture %>
         <%= form.input :picture_cache, as: :hidden %>

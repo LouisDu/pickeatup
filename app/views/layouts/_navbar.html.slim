@@ -25,15 +25,15 @@ header#header
                       = current_user.orders.where(status: 'Pending').count
 
                 ul.dropdown-menu.dropdown-menu-right
-                  li = link_to 'My orders', orders_path
+                  li = link_to 'Mes commandes', orders_path
             li.dropdown
               a.dropdown-toggle aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
                 | Restaurants
                 span.caret
               ul.dropdown-menu.dropdown-menu-right
-                li = link_to 'New Restaurant', new_restaurant_path
+                li = link_to 'Ajouter un Restau', new_restaurant_path
                 - if current_user.restaurants.presence
-                  li = link_to 'My Restaurants', restaurants_path
+                  li = link_to 'Mes Restau', restaurants_path
 
             li.dropdown
               a.dropdown-toggle.navbar-wagon-pict aria-expanded="true" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
@@ -43,8 +43,8 @@ header#header
                     = image_tag current_user.profile.picture, class: "avatar"
                   span.caret
               ul.dropdown-menu.dropdown-menu-right
-                li = link_to 'My profile', user_profile_path(current_user,current_user.profile)
-                li = link_to 'Sign out', destroy_user_session_path, method: :delete
+                li = link_to 'Mon Profile', user_profile_path(current_user,current_user.profile)
+                li = link_to 'Deconnexion', destroy_user_session_path, method: :delete
           - else
-            li = link_to 'Sign in', new_user_session_path
-            li = link_to 'Sign up', new_user_registration_path
+            li = link_to 'Connexion', new_user_session_path
+            li = link_to 'Inscription', new_user_registration_path

@@ -1,4 +1,4 @@
-.banner.text-center style="background: linear-gradient(-200deg, rgb(50, 50, 50) -3%, rgba(100, 100, 100, 0) 53%); background-image: url('#{image_path 'homepage.jpg'}'); background-size: cover;"
+.banner.text-center.banner-home
   .container
     .banner-content
       h1 Pickeatup.
@@ -42,7 +42,7 @@
           li
             .testimonial.clearfix
               .avatar
-                img alt=("Julien") src="assets/ben.jpg" /
+                = image_tag('ben.jpg')
               .quote-box
                 p.quote
                   i.arrow
@@ -53,7 +53,7 @@
           li
             .testimonial.clearfix
               .avatar
-                img alt=("Louis") src="assets/lou.jpg" /
+                = image_tag('lou.jpg')
               .quote-box
                 p.quote
                   i.arrow

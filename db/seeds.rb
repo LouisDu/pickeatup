@@ -82,6 +82,15 @@ flix.profile.update!(
     phone_number: '06 50 50 50 50',
     )
 
+daniel = User.new(email: "dublancq@gmail.com", password: 'pickeatup')
+flix.save!
+flix.profile.update!(
+    first_name:   'Daniel',
+    last_name:    'Cuisto',
+    date_of_birth: Date.parse('12/05/1976'),
+    phone_number: '06 30 50 50 50',
+    )
+
 puts 'Generating Restaurants'
 
 # GUS  Resto
@@ -162,6 +171,67 @@ puts 'Generating Restaurants'
     )
   barouge.save!
 
+# Daniel resto
+
+  tablesiam = daniel.restaurants.build(
+    name:             "Ma table Siam",
+    street_number:    (1..99).to_a.sample,
+    route:            "Rue des écoles",
+    locality:         "Paris",
+    administrative_area_level_1: "Île de France",
+    postal_code:      "75005",
+    country:          "France",
+    restaurant_type:  Thai,
+    )
+  tablesiam.save!
+
+  vietcagette = daniel.restaurants.build(
+    name:             "Viet Cagette",
+    street_number:    (1..99).to_a.sample,
+    route:            "Rue de l'école de Médecine",
+    locality:         "Paris",
+    administrative_area_level_1: "Île de France",
+    postal_code:      "75005",
+    country:          "France",
+    restaurant_type:  Vietnamien,
+    )
+  vietcagette.save!
+
+  littlecuisine = daniel.restaurants.build(
+    name:             "Little Cuisine",
+    street_number:    (1..99).to_a.sample,
+    route:            "Rue de la harpe",
+    locality:         "Paris",
+    administrative_area_level_1: "Île de France",
+    postal_code:      "75005",
+    country:          "France",
+    restaurant_type:  Français,
+    )
+  littlecuisine.save!
+
+  loulous = daniel.restaurants.build(
+    name:             "Loulou's",
+    street_number:    (1..99).to_a.sample,
+    route:            "Rue Danton",
+    locality:         "Paris",
+    administrative_area_level_1: "Île de France",
+    postal_code:      "75005",
+    country:          "France",
+    restaurant_type:  Français,
+    )
+  loulous.save!
+
+  condosramon = daniel.restaurants.build(
+    name:             "Una cerveza con dos ramon",
+    street_number:    (1..99).to_a.sample,
+    route:            "Rue Monsieur le Prince",
+    locality:         "Paris",
+    administrative_area_level_1: "Île de France",
+    postal_code:      "75005",
+    country:          "France",
+    restaurant_type:  Espagnol,
+    )
+  condosramon.save!
 
 
 puts 'Generating Meals'
